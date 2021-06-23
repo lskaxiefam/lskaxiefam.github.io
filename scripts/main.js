@@ -1,6 +1,7 @@
 var GOD_MODE = false;
 var minSlp = 3000;
-var idealRate = 100;
+var minRate = 100;
+var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
   {
@@ -118,18 +119,10 @@ var scholar = {
     }
 
     // Rate
-    if (item.rate >= idealRate) {
-      row += '<td class="success right">' + item.rate + '</td>';
-    } else {
-      row += '<td class="warn right">' + item.rate + '</td>';
-    }
+    row += '<td class="right">' + item.rate + '</td>';
 
     // Goal Rate
-    if (item.reqRate > idealRate) {
-      row += '<td class="warn right">' + item.reqRate + '</td>';
-    } else {
-      row += '<td class="success right">' + item.reqRate + '</td>';
-    }
+    row += '<td class="right">' + item.reqRate + '</td>';
 
     // SLP
     if (item.slp >= minSlp) {
@@ -160,9 +153,11 @@ var scholar = {
       totalEarned += item.slpEarned * slpPriceInPhp;
       totalSlpFee += item.slpFee;
       totalFee += item.slpFee * slpPriceInPhp;
-      var isDanger = item.reqRate > idealRate;
+      var isDanger = item.rate < minRate;
+      var isDoingGood = item.rate >= idealRate;
       var row = $('<tr>', { html: scholar.formatRowData(item) });
       if (isDanger) { row.addClass('danger'); }
+      if (isDoingGood) { row.addClass('good'); }
       row.appendTo($("#scholarsList tbody"));
     });
 

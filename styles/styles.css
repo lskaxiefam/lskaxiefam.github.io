@@ -43,6 +43,10 @@ tr.danger {
   background-color: #f18a8a;
 }
 
+tr.good {
+  background-color: #75b680;
+}
+
 .insight {
   display: none !important;
 }
