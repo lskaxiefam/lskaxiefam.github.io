@@ -1,5 +1,6 @@
+var GOD_MODE = false;
 var minSlp = 3000;
-var idealRate = 150;
+var idealRate = 100;
 var slpPriceInPhp = 0;
 var scholarData = [
   {
@@ -88,6 +89,17 @@ var helper = {
   },
   sortBySlpDesc: function (a, b){
     return ((a.slp < b.slp) ? -1 : ((a.slp > b.slp) ? 1 : 0));
+  },
+  getUrlVars: function() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
   }
 }
 
@@ -101,7 +113,9 @@ var scholar = {
     //row += '<td> **** </td>';
 
     // Account
-    //row += '<td>' + item.account + '</td>';
+    if (GOD_MODE) {
+      row += '<td><small>' + item.account + '</small></td>';
+    }
 
     // Rate
     if (item.rate >= idealRate) {
@@ -116,24 +130,23 @@ var scholar = {
     } else {
       row += '<td class="success right">' + item.reqRate + '</td>';
     }
+
     // SLP
     if (item.slp >= minSlp) {
-      row += '<td class="success right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"></td>';
+      row += '<td class="success right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
     } else {
-      row += '<td class="right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"></td>';
+      row += '<td class="right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
     }
 
-    // Total Unclaimed
-    var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '</strong> <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> <br/>(<small class="money">' + earnedPhp + ')</small></td>';
-    
     // Total Fee
-    var feePhp = helper.formatNumber(item.slpFee * slpPriceInPhp);
-    // row += '<td class="right">' + item.slpFee + ' (<small class="money">' + feePhp + ')</small></td>';
-    
+    row += '<td class="right">' + helper.formatNumber(item.slpFee) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
+
+    // Total Payout
+    var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
+    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '</strong> <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"> <br/>(<small class="money">' + earnedPhp + ')</small></td>';
+
     return row;
   },
-  
   appendData: function(data) {
     var totalSlpEarned = 0;
     var totalEarned = 0;
@@ -147,14 +160,15 @@ var scholar = {
       totalEarned += item.slpEarned * slpPriceInPhp;
       totalSlpFee += item.slpFee;
       totalFee += item.slpFee * slpPriceInPhp;
-
-      $('<tr>', { html: scholar.formatRowData(item) }).appendTo($("#scholarsList tbody"));
+      var isDanger = item.reqRate > idealRate;
+      var row = $('<tr>', { html: scholar.formatRowData(item) });
+      if (isDanger) { row.addClass('danger'); }
+      row.appendTo($("#scholarsList tbody"));
     });
 
     $('#totalSlpEarned').html(helper.formatNumber(totalSlpEarned));
-    $('#totalEarned').html('₱ ' + helper.formatNumber(totalEarned));
-    // $('#totalSlpFee').html(Number(totalSlpFee).toLocaleString('en'));
-    // $('#totalFee').html('₱ ' + Number(totalFee).toLocaleString('en'));
+    $('#totalSlpFee').html(Number(totalSlpFee).toLocaleString('en'));
+    $('#totalFee').html('₱ ' + Number(totalFee).toLocaleString('en'));
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
@@ -191,7 +205,7 @@ var scholar = {
           scholarData[i].slp = result.total - result.claimable_total;
           scholarData[i].rate = Math.floor(scholarData[i].slp / date);
           scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
-          scholarData[i].slpEarned = Math.round(scholarData[i].slp * (scholarData[i].earnRate / 100));
+          scholarData[i].slpEarned = Math.ceil(scholarData[i].slp * (scholarData[i].earnRate / 100));
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
           scholarData[i].updated = true;
 
@@ -203,6 +217,12 @@ var scholar = {
 }
 
 $( document ).ready(function() {
+
+  GOD_MODE = helper.getUrlVars()['mode'] === 'god';
+  if (GOD_MODE) {
+    $(".insight").removeClass("insight");
+  }
+
   scholar.getSlpPrice();
   scholar.getSlp();
 });

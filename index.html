@@ -14,6 +14,20 @@
 <body>
   <section class="section is-small">
     <h1 class="title" style="text-align: center;color:#1c78bb">LSK | Axie Fam</h1>
+    <nav class="level is-mobile insight">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> Fee</p>
+          <p class="title" id="totalSlpFee"></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Fee</p>
+          <p class="title" id="totalFee"></p>
+        </div>
+      </div>
+    </nav>
     <nav class="level is-mobile">
       <div class="level-item has-text-centered">
         <div>
@@ -40,72 +54,46 @@
       <thead>
         <tr>
           <th><small>name</small></th>
-          <!-- <th>Email</th>
-          <th>Account</th> -->
+          <th class="insight"><small>acct</small></th>
           <th class="right"><small>rate / day</small></th>
           <th class="right"><small>goal / day</small></th>
           <th class="right"><small>total</small></th>
-          <th class="right"><small>unclaimed</small></th>
-          <!-- <th class="right">Fee</th> -->
+          <th class="right"><small>fee</small></th>
+          <th class="right"><small>payout</small></th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
   </div>
+
   <br />
-  <nav class="level is-mobile">
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Total Unclaimed <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"></p>
-        <p class="title" id="totalSlpEarned"></p>
-      </div>
-    </div>
-    <!-- <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Total Earned</p>
-        <p class="title" id="totalEarned"></p>
-      </div>
-    </div> -->
-    <!-- <div class="level-item has-text-centered">
-      <div>
-        <p class="heading"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> Fee</p>
-        <p class="title" id="totalSlpFee"></p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Total Fee</p>
-        <p class="title" id="totalFee"></p>
-      </div>
-    </div> -->
-  </nav>
 
   <div class="tile is-parent">
     <article class="tile is-child notification is-danger">
       <div class="content">
-        <p class="title">READ ME!</p>
+        <p class="title">IMPORTANT!</p>
         <p class="subtitle">Play by the rules to stay in in the game.</p>
         <div class="content">
           <ul>
             <li>
-              Minimum <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP (3,000) per month must be reached to stay in the program.
+              Minimum 3000 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> per month must be reached to stay in the program.
+              <br/><br/> 
             </li>
             <li>
-              Players must take responsibilty/accountability of their account.
+              Players must take responsibilty/accountability of their account.<br/><br/> 
             </li>
             <li>
-              If the axie account gets banned, player is will removed from the program. 
+              If the Axie account gets banned, player will be removed from the program all unclaimed <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> will be forfeited.<br/><br/> 
             </li>
             <li>
-              Keep in contact with the team via <a href="https://discord.gg/f3DR8zeywK" target="_blank">Discord</a> and be sure to read announcements. 
+              Keep in contact with the team via <a href="https://discord.gg/f3DR8zeywK" target="_blank">Discord</a> and be sure to read announcements.
             </li>
           </ul>
         </div>
       </div>
     </article>
   </div>
-  
   <div class="tile is-parent">
     <article class="tile is-child notification is-info">
       <div class="content">
@@ -114,18 +102,19 @@
         <div class="content">
           <ul>
             <li>
-              Fee is 35% of total <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP farmed
-              capped at 1700 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP per month.
-              <br/> 
-              <small>e.g. If you farmed a total of 4000 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP in a month, your payout will be 2600 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP (<span id="payout1"></span>). The remaining 1400 (35%) <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP will be deducated as fee.</small>
-              <br/>
-              <small>e.g. If you farmed a total of 6000 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP in a month, your payout will be 4300 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP (<span id="payout2"></span>). The deducted fee will be capped at 1700 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP.</small>
+              Fee is 35% of total <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> farmed
+              capped at 1700 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> per month.
+              <br/><br/> 
+              <small>e.g. If you farmed a total of 4000 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> in a month, your payout will be 2600 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> (<span id="payout1"></span>). The remaining 1400 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> (35%) will be deducated as fee.</small>
+              <br/><br/> 
+              <small>e.g. If you farmed a total of 6000 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> in a month, your payout will be 4300 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> (<span id="payout2"></span>). The deducted fee will be capped at 1700 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small">.</small>
+              <br/><br/> 
             </li>
             <li>
-              Payouts will be claimed and distributed every 1st <small id="daysToGo"></small> of the month before 8am. 
+              Payouts will be claimed and distributed every 1st <small id="daysToGo"></small> of the month before 8am. <br/><br/> 
             </li>
             <li>
-              Payouts will be deposited to players <a href="https://chrome.google.com/webstore/detail/ronin-wallet/fnjhmkhhmkbjkkabndcnnogagogbneec" target="_blank">Ronin Wallet</a> as <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> SLP.
+              Payouts will be deposited to players <a href="https://chrome.google.com/webstore/detail/ronin-wallet/fnjhmkhhmkbjkkabndcnnogagogbneec" target="_blank">Ronin Wallet</a> as <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small">.
               <br/>
               <small><a href="https://www.youtube.com/watch?v=14H9v1R-R5c" target="_blank">Set-up your Ronin Wallet on Mobile</a></small>
             </li>
@@ -134,7 +123,6 @@
       </div>
     </article>
   </div>
-
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">

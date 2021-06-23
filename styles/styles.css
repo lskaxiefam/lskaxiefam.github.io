@@ -1,3 +1,7 @@
+body {
+  background-color: #d9d5e2;
+}
+
 .container {
   margin: 0 20px;
 }
@@ -13,8 +17,13 @@
 .slp-icon {
   height: 25px;
 }
+
 .slp-icon-small {
   height: 15px;
+}
+
+.slp-icon-tiny {
+  height: 10px;
 }
 
 .money::before {
@@ -27,5 +36,13 @@
 
 table {
   font-size: 13px;
-  width: 100%
+  width: 100%;
+}
+
+tr.danger {
+  background-color: #f18a8a;
+}
+
+.insight {
+  display: none !important;
 }
