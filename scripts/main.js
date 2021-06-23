@@ -163,7 +163,7 @@ var scholar = {
 
     $('#totalSlpEarned').html(helper.formatNumber(totalSlpEarned));
     $('#totalSlpFee').html(Number(totalSlpFee).toLocaleString('en'));
-    $('#totalFee').html('₱ ' + Number(totalFee).toLocaleString('en'));
+    $('#totalFee').html('₱' + Number(totalFee).toLocaleString('en'));
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
@@ -176,9 +176,9 @@ var scholar = {
       slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
       var payout1 = 2600 * slpPriceInPhp;
       var payout2 = 4300 * slpPriceInPhp;
-      $('#slpPrice').html('₱ ' + helper.formatNumber(slpPriceInPhp));
-      $('#payout1').html('₱ ' + helper.formatNumber(payout1));
-      $('#payout2').html('₱ ' + helper.formatNumber(payout2));
+      $('#slpPrice').html('₱' + helper.formatNumber(slpPriceInPhp));
+      $('#payout1').html('₱' + helper.formatNumber(payout1));
+      $('#payout2').html('₱' + helper.formatNumber(payout2));
     }});
   },
   getSlp: function() {
