@@ -153,8 +153,8 @@ var scholar = {
       $('<tr>', { html: scholar.formatRowData(item) }).appendTo($("#scholarsList tbody"));
     });
 
-    $('#totalSlpEarned').html(Number(totalSlpEarned).toLocaleString('en'));
-    $('#totalEarned').html('₱ ' + Number(totalEarned).toLocaleString('en'));
+    $('#totalSlpEarned').html(helper.formatNumber(totalSlpEarned));
+    $('#totalEarned').html('₱ ' + helper.formatNumber(totalEarned));
     // $('#totalSlpFee').html(Number(totalSlpFee).toLocaleString('en'));
     // $('#totalFee').html('₱ ' + Number(totalFee).toLocaleString('en'));
   },
@@ -180,8 +180,8 @@ var scholar = {
       (function (i) {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1', success: function(result){
           scholarData[i].slp = result.total - result.claimable_total;
-          scholarData[i].rate = (scholarData[i].slp / date).toFixed(2);
-          scholarData[i].reqRate = (minSlp - scholarData[i].slp) / (lastday - date);
+          scholarData[i].rate = Math.floor(scholarData[i].slp / date);
+          scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
           scholarData[i].slpEarned = Math.round(scholarData[i].slp * (scholarData[i].earnRate / 100));
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
           scholarData[i].updated = true;
