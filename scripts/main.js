@@ -132,17 +132,17 @@ var scholar = {
 
     // SLP
     if (item.slp >= minSlp) {
-      row += '<td class="success right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
+      row += '<td class="success right">' + helper.formatNumber(item.slp) + '</td>';
     } else {
-      row += '<td class="right">' + helper.formatNumber(item.slp) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
+      row += '<td class="right">' + helper.formatNumber(item.slp) + '</td>';
     }
 
     // Total Fee
-    row += '<td class="right">' + helper.formatNumber(item.slpFee) + ' <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"></td>';
+    row += '<td class="right">' + helper.formatNumber(item.slpFee) + '</td>';
 
     // Total Payout
     var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '</strong> <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"> <br/>(<small class="money">' + earnedPhp + ')</small></td>';
+    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '</strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
 
     return row;
   },
