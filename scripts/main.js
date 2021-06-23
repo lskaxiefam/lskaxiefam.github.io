@@ -166,9 +166,12 @@ var scholar = {
   },
   getSlpPrice: function(){
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
-      slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
-
+      var slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
+      var payout1 = 2600 * slpPriceInPhp;
+      var payout2 = 4300 * slpPriceInPhp;
       $('#slpPrice').html('₱ ' + helper.formatNumber(slpPriceInPhp));
+      $('#payout1').html('₱ ' + helper.formatNumber(payout1));
+      $('#payout2').html('₱ ' + helper.formatNumber(payout2));
     }});
   },
   getSlp: function() {
@@ -176,6 +179,14 @@ var scholar = {
     var date = now.getDate();
     var lastday = scholar.getLastDayOfMonth(now.getFullYear(), now.getMonth());
     $('#daysLeft').html(lastday - date);
+    
+
+    if (date === 1) {
+      $('#daysToGo').html('(today is the day!)');
+    } else {
+      $('#daysToGo').html('(' + (lastday - date) + ' days to go)');
+    }
+
     for (var i = 0; i < scholarData.length ; ++i) {
       (function (i) {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1', success: function(result){
