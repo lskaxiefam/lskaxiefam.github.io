@@ -5,6 +5,7 @@ var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
     "name":"LSB",
     "fullName": "Lavlee Badilla",
     "email":"leonkennedy@lavabit.com",
@@ -20,6 +21,7 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/464498/axie/axie-full-transparent.png",
     "name":"DB",
     "fullName": "Daniel Badilla",
     "email":"zeekillingmachine98@gmail.com",
@@ -35,6 +37,7 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/715964/axie/axie-full-transparent.png",
     "name":"REM",
     "fullName": "Ronn Margallo",
     "email":"philip.c.p.badilla.genesis@gmail.com",
@@ -50,6 +53,7 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/770689/axie/axie-full-transparent.png",
     "name":"AZM",
     "fullName": "Alei Margallo",
     "email":"lsksch04@gmail.com",
@@ -65,6 +69,7 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/558430/axie/axie-full-transparent.png",
     "name":"JBP",
     "fullName": "Jan Bernard Payumo",
     "email":"lsksch04@gmail.com",
@@ -108,7 +113,8 @@ var scholar = {
   formatRowData: function(item) {
     var row = '';
     // Name
-    row += '<td>' + item.name + '</td>';
+    // row += '<td>' + item.name + '</td>';
+    row += '<td><img src="' + item.avatar + '" class="avatar"></td>';
 
     // Email
     //row += '<td> **** </td>';
