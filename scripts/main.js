@@ -106,14 +106,22 @@ var helper = {
       vars[hash[0]] = hash[1];
     }
     return vars;
+  },
+  getLastDayOfMonth: function(y,m){
+    return  new Date(y, m +1, 0).getDate();
   }
 }
 
-var scholar = {
+var main = {
+  tryEnableGodMode: function() {
+    GOD_MODE = helper.getUrlVars()['mode'] === 'god';
+    if (GOD_MODE) {
+      $(".insight").removeClass("insight");
+    }
+  },
   formatRowData: function(item) {
     var row = '';
     // Name
-    // row += '<td>' + item.name + '</td>';
     row += '<td><img src="' + item.avatar + '" class="avatar"></td>';
 
     // Email
@@ -142,7 +150,7 @@ var scholar = {
 
     // Total Payout
     var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '</strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
+    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
 
     return row;
   },
@@ -153,7 +161,6 @@ var scholar = {
     var totalFee = 0;
 
     scholarData.sort(helper.sortBySlpAsc);
-
     $.each(data, function (key, item) {
       totalSlpEarned += item.slpEarned;
       totalEarned += item.slpEarned * slpPriceInPhp;
@@ -161,9 +168,11 @@ var scholar = {
       totalFee += item.slpFee * slpPriceInPhp;
       var isDanger = item.rate < minRate;
       var isDoingGood = item.rate >= idealRate;
-      var row = $('<tr>', { html: scholar.formatRowData(item) });
+      var row = $('<tr>', { html: main.formatRowData(item) });
+
       if (isDanger) { row.addClass('danger'); }
       if (isDoingGood) { row.addClass('good'); }
+
       row.appendTo($("#scholarsList tbody"));
     });
 
@@ -173,10 +182,7 @@ var scholar = {
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
-  },
-  getLastDayOfMonth: function(y,m){
-    return  new Date(y, m +1, 0).getDate();
-  },
+  },  
   getSlpPrice: function(){
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
       slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
@@ -187,22 +193,23 @@ var scholar = {
       $('#payout2').html('₱' + helper.formatNumber(payout2));
     }});
   },
-  getSlp: function() {
+  getAllScholarSlp: function() {
     var now = new Date()
     var date = now.getDate();
-    var lastday = scholar.getLastDayOfMonth(now.getFullYear(), now.getMonth());
-    $('#daysLeft').html(lastday - date);
+    var lastday = helper.getLastDayOfMonth(now.getFullYear(), now.getMonth());
+    var daysLeft = lastday - date
+    $('#daysLeft').html(daysLeft);
     
-
     if (date === 1) {
       $('#daysToGo').html('(today is the day!)');
     } else {
-      $('#daysToGo').html('(' + (lastday - date) + ' days to go)');
+      $('#daysToGo').html('(' + daysLeft + ' days to go)');
     }
 
     for (var i = 0; i < scholarData.length ; ++i) {
       (function (i) {
-        $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1', success: function(result){
+        $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1',
+        success: function(result){
           scholarData[i].slp = result.total - result.claimable_total;
           scholarData[i].rate = Math.floor(scholarData[i].slp / date);
           scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
@@ -210,20 +217,15 @@ var scholar = {
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
           scholarData[i].updated = true;
 
-          if (scholar.isDataReady()) { scholar.appendData(scholarData); }
+          if (main.isDataReady()) { main.appendData(scholarData); }
         }});
       })(i);
     }
   }
 }
 
-$( document ).ready(function() {
-
-  GOD_MODE = helper.getUrlVars()['mode'] === 'god';
-  if (GOD_MODE) {
-    $(".insight").removeClass("insight");
-  }
-
-  scholar.getSlpPrice();
-  scholar.getSlp();
+$(document).ready(function() {
+  main.tryEnableGodMode();
+  main.getSlpPrice();
+  main.getAllScholarSlp();
 });
