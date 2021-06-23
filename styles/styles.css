@@ -1,0 +1,31 @@
+.container {
+  margin: 0 20px;
+}
+
+.warn {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.slp-icon {
+  height: 25px;
+}
+.slp-icon-small {
+  height: 15px;
+}
+
+.money::before {
+  content:"₱ ";
+}
+
+.right {
+  text-align: right!important;
+}
+
+table {
+  font-size: 13px;
+  width: 100%
+}

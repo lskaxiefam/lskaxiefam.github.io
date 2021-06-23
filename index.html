@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LSK Axie Fam Dashboard</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LSK Axie Fam - Dashboard">
+  <script src="vendor/jquery-3.6.0.min.js"></script>
+  
+  <link rel="stylesheet" href="vendor/bulma.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <section class="section is-small">
+    <h1 class="title" style="text-align: center;color:#1c78bb">LSK | Axie Fam</h1>
+    <nav class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Days Left</p>
+          <p class="title" id="daysLeft"></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Goal / <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> Month</p>
+          <p class="title" id="goalPerMonth">3,000</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> Price</p>
+          <p class="title" id="slpPrice"></p>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <div class="container">
+    <table class="table" id="scholarsList">
+      <thead>
+        <tr>
+          <th><small>name</small></th>
+          <!-- <th>Email</th>
+          <th>Account</th> -->
+          <th class="right"><small>rate / day</small></th>
+          <th class="right"><small>goal / day</small></th>
+          <th class="right"><small>total</small></th>
+          <th class="right"><small>unclaimed</small></th>
+          <!-- <th class="right">Fee</th> -->
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <nav class="level is-mobile">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Total Unclaimed <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"></p>
+        <p class="title" id="totalSlpEarned"></p>
+      </div>
+    </div>
+    <!-- <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Total Earned</p>
+        <p class="title" id="totalEarned"></p>
+      </div>
+    </div> -->
+    <!-- <div class="level-item has-text-centered">
+      <div>
+        <p class="heading"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-small"> Fee</p>
+        <p class="title" id="totalSlpFee"></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Total Fee</p>
+        <p class="title" id="totalFee"></p>
+      </div>
+    </div> -->
+  </nav>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
