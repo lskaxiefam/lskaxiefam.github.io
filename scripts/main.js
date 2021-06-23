@@ -103,8 +103,6 @@ var scholar = {
     // Account
     //row += '<td>' + item.account + '</td>';
 
-    
-
     // Rate
     if (item.rate >= idealRate) {
       row += '<td class="success right">' + item.rate + '</td>';
@@ -166,7 +164,7 @@ var scholar = {
   },
   getSlpPrice: function(){
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
-      var slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
+      slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
       var payout1 = 2600 * slpPriceInPhp;
       var payout2 = 4300 * slpPriceInPhp;
       $('#slpPrice').html('₱ ' + helper.formatNumber(slpPriceInPhp));
