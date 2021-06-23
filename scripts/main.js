@@ -175,7 +175,7 @@ var scholar = {
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
       slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
       var payout1 = 2600 * slpPriceInPhp;
-      var payout2 = 4300 * slpPriceInPhp;
+      var payout2 = 4200 * slpPriceInPhp;
       $('#slpPrice').html('₱' + helper.formatNumber(slpPriceInPhp));
       $('#payout1').html('₱' + helper.formatNumber(payout1));
       $('#payout2').html('₱' + helper.formatNumber(payout2));
