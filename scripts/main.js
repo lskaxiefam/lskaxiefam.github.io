@@ -132,11 +132,24 @@ var main = {
       row += '<td><small>' + item.account + '</small></td>';
     }
 
-    // Rate
-    row += '<td class="right">' + item.rate + '</td>';
-
-    // Goal Rate
-    row += '<td class="right">' + item.reqRate + '</td>';
+    // Rate/Goal
+    var rating = '';
+    if (item.rate < minRate) {
+      rating = 'is-danger'
+    } else if (item.rate > minRate && item.rate < idealRate) {
+      rating = 'is-info';
+    } else if (item.rate > idealRate) {
+      rating = 'is-success';
+    }
+     
+    row += `<td class="right">
+              <span class="control inline">
+                <span class="tags has-addons">
+                  <span class="tag ${rating}">${ item.rate } <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag">${ item.reqRate } <img src="images/slp.png" class="slp-icon-tiny"></span>
+                </span>
+              </span>
+            </td>`;
 
     // SLP
     row += `<td class="success right">
@@ -150,12 +163,11 @@ var main = {
     
     // Total Payout
     var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    //row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="images/slp.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
                   <span class="tag">${helper.formatNumber(item.slpEarned)} <img src="images/slp.png" class="slp-icon-tiny"></span>
-                  <span class="tag is-primary"><small class="money">${earnedPhp}</small></span>
+                  <span class="tag is-dark"><small class="money">${earnedPhp}</small></span>
                 </span>
               </span>
             </td>`
@@ -173,12 +185,8 @@ var main = {
       totalEarned += item.slpEarned * slpPriceInPhp;
       totalSlpFee += item.slpFee;
       totalFee += item.slpFee * slpPriceInPhp;
-      var isDanger = item.rate < minRate;
-      var isDoingGood = item.rate >= idealRate;
-      var row = $('<tr>', { html: main.formatRowData(item) });
 
-      if (isDanger) { row.addClass('danger'); }
-      if (isDoingGood) { row.addClass('good'); }
+      var row = $('<tr>', { html: main.formatRowData(item) });
 
       row.appendTo($("#scholarsList tbody"));
     });
@@ -218,7 +226,7 @@ var main = {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1',
         success: function(result){
           scholarData[i].slp = result.total - result.claimable_total;
-          scholarData[i].rate = Math.floor(scholarData[i].slp / date);
+          scholarData[i].rate = Math.floor(scholarData[i].slp / date) + 90;
           scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
           scholarData[i].slpEarned = Math.ceil(scholarData[i].slp * (scholarData[i].earnRate / 100));
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
