@@ -139,19 +139,26 @@ var main = {
     row += '<td class="right">' + item.reqRate + '</td>';
 
     // SLP
-    if (item.slp >= minSlp) {
-      row += '<td class="success right">' + helper.formatNumber(item.slp) + '</td>';
-    } else {
-      row += '<td class="right">' + helper.formatNumber(item.slp) + '</td>';
-    }
+    row += `<td class="success right">
+              <span class="tag">${helper.formatNumber(item.slp)} <img src="images/slp.png" class="slp-icon-tiny"></span>
+            </td>`;
 
     // Total Fee
-    row += '<td class="right">' + helper.formatNumber(item.slpFee) + '</td>';
-
+    if (GOD_MODE) {
+      row += '<td class="right">' + helper.formatNumber(item.slpFee) + '</td>';
+    }
+    
     // Total Payout
     var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="images/slp.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
-
+    //row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="images/slp.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
+    row += `<td class="right">
+              <span class="control inline">
+                <span class="tags has-addons">
+                  <span class="tag">${helper.formatNumber(item.slpEarned)} <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag is-primary"><small class="money">${earnedPhp}</small></span>
+                </span>
+              </span>
+            </td>`
     return row;
   },
   appendData: function(data) {
