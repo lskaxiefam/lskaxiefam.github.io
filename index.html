@@ -3,19 +3,57 @@
 <head>
   <meta charset="utf-8">
   <title>LSK Axie Fam Dashboard</title>
-
   <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LSK Axie Fam - Dashboard">
-  <script src="vendor/jquery-3.6.0.min.js"></script>
+  <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
   
-  <link rel="stylesheet" href="vendor/bulma.min.css">
+  <link rel="stylesheet" href="vendor/fa/css/all.min.css">
+  <link rel="stylesheet" href="vendor/bulma/bulma.min.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+  <!-- TOOL BOX -->
+  <p class="buttons tool-button-wrapper">
+    <button class="button" onclick="calc.open()">
+      <span class="icon is-small">
+        <i class="fas fa-calculator"></i>
+      </span>
+    </button>
+  </p>
+  
+  <!-- CALC MODAL -->
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <section class="hero is-primary is-info">
+        <div class="hero-body">
+          <nav class="level is-mobile">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Energy</p>
+                <p class="title" id="enemyEnergy">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Cards</p>
+                <p class="title" id="enemyCards">0</p>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="calc.close()"></button>
+  </div>
+
+  <!-- HEADER -->
   <section class="section is-small">
     <h1 class="title" style="text-align: center; color: white">LSK | Axie Fam</h1>
   </section>
+
+  <!-- DASH -->
   <section class="hero is-primary">
     <div class="hero-body">
       <nav class="level is-mobile insight">
@@ -55,6 +93,7 @@
     </div>
   </section>
 
+  <!-- TABLE -->
   <div class="columns is-mobile is-centered" style="margin: 15px 15px;">
     <table class="table" id="scholarsList">
       <thead>
@@ -73,6 +112,7 @@
     </table>
   </div>
 
+  <!-- IMPORTANT -->
   <section class="hero is-danger">
     <div class="hero-body">
       <p class="title">
@@ -112,6 +152,7 @@
     </article>
   </div>
 
+  <!-- PAYMENT INFO -->
   <section class="hero is-info">
     <div class="hero-body">
       <p class="title">
@@ -150,6 +191,7 @@
     </article>
   </div>
 
+  <!-- GUIDES -->
   <section class="hero is-success">
     <div class="hero-body">
       <p class="title">
@@ -189,5 +231,6 @@
   </div>
 
   <script src="scripts/main.js"></script>
+  <script src="scripts/calc.js"></script>
 </body>
 </html>

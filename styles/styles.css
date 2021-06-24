@@ -2,6 +2,12 @@ body {
   background-color: #052846;
 }
 
+.tool-button-wrapper {
+  position: absolute;
+  right: 16px;
+  top: 26px;
+}
+
 .warn {
   color: red;
 }
