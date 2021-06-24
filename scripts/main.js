@@ -113,6 +113,28 @@ var helper = {
   }
 }
 
+var ui = {
+  slpPrice: function(value) {
+    var payout1 = 2600 * value;
+    var payout2 = 4200 * value;
+    $('#slpPrice').html('₱' + helper.formatNumber(value));
+    $('#payout1').html('₱' + helper.formatNumber(payout1));
+    $('#payout2').html('₱' + helper.formatNumber(payout2));
+  },
+  totalSlpEarned: function(value) {
+    $('#totalSlpEarned').html(helper.formatNumber(value));
+  },
+  totalSlpFee: function(value) {
+    $('#totalSlpFee').html(Number(value).toLocaleString('en'));
+  },
+  totalFee: function(value) {
+    $('#totalFee').html('₱' + Number(value).toLocaleString('en'));
+  },
+  daysLeft: function(value) {
+    $('#daysLeft').html(value);
+  },
+}
+
 var main = {
   tryEnableGodMode: function() {
     GOD_MODE = helper.getUrlVars()['mode'] === 'god';
@@ -194,9 +216,9 @@ var main = {
       row.appendTo($("#scholarsList tbody"));
     });
 
-    $('#totalSlpEarned').html(helper.formatNumber(totalSlpEarned));
-    $('#totalSlpFee').html(Number(totalSlpFee).toLocaleString('en'));
-    $('#totalFee').html('₱' + Number(totalFee).toLocaleString('en'));
+    ui.totalSlpEarned(totalSlpEarned);
+    ui.totalSlpFee(totalSlpFee);
+    ui.totalFee(totalFee);
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
@@ -204,11 +226,7 @@ var main = {
   getSlpPrice: function(){
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
       slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
-      var payout1 = 2600 * slpPriceInPhp;
-      var payout2 = 4200 * slpPriceInPhp;
-      $('#slpPrice').html('₱' + helper.formatNumber(slpPriceInPhp));
-      $('#payout1').html('₱' + helper.formatNumber(payout1));
-      $('#payout2').html('₱' + helper.formatNumber(payout2));
+      ui.slpPrice(slpPriceInPhp);
     }});
   },
   getAllScholarSlp: function() {
@@ -216,13 +234,7 @@ var main = {
     var date = now.getDate();
     var lastday = helper.getLastDayOfMonth(now.getFullYear(), now.getMonth());
     var daysLeft = lastday - date
-    $('#daysLeft').html(daysLeft);
-    
-    if (date === 1) {
-      $('#daysToGo').html('(today is the day!)');
-    } else {
-      $('#daysToGo').html('(' + daysLeft + ' days to go)');
-    }
+    ui.daysLeft(daysLeft);
 
     for (var i = 0; i < scholarData.length ; ++i) {
       (function (i) {
@@ -242,6 +254,7 @@ var main = {
   }
 }
 
+// Initialize!
 $(document).ready(function() {
   main.tryEnableGodMode();
   main.getSlpPrice();
