@@ -11,7 +11,7 @@ var calc = {
     var removeFromEnemyEnergy = ['2','c'].indexOf(event.key) != -1;
     var addToEnemyCards = ['6','f'].indexOf(event.key) != -1;
     var removeFromEnemyCards = ['v','3'].indexOf(event.key) != -1;
-    var nextRound = ['=','r'].indexOf(event.key) != -1;
+    var nextRound = ['=','r', '-'].indexOf(event.key) != -1;
     var reset = ['Escape'].indexOf(event.key) != -1;
 
     if (addToEnemyCards) {
