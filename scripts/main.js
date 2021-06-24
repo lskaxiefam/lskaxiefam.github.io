@@ -150,7 +150,7 @@ var main = {
 
     // Total Payout
     var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
-    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
+    row += '<td class="right"><strong>' + helper.formatNumber(item.slpEarned) + '<img src="images/slp.png" class="slp-icon-tiny"> </strong><br/>(<small class="money">' + earnedPhp + ')</small></td>';
 
     return row;
   },
