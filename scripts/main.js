@@ -170,7 +170,7 @@ var main = {
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
-                  <span class="tag ${rating}">${ item.rate }</span>
+                  <span class="tag ${ rating }">${ item.rate }</span>
                   <span class="tag">${ item.reqRate }</span>
                 </span>
               </span>
@@ -178,12 +178,14 @@ var main = {
 
     // SLP
     row += `<td class="success right">
-              <span class="tag">${helper.formatNumber(item.slp)}</span>
+              <span class="tag">${ helper.formatNumber(item.slp) }</span>
             </td>`;
 
     // Total Fee
     if (GOD_MODE) {
-      row += '<td class="right">' + helper.formatNumber(item.slpFee) + '</td>';
+      row += `<td class="right">
+                <span class="tag">${ helper.formatNumber(item.slpFee) }</span>
+              </td>`;
     }
     
     // Total Payout
