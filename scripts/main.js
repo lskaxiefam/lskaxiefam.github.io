@@ -1,6 +1,7 @@
 var GOD_MODE = false;
 var minSlp = 3000;
 var minRate = 100;
+var cutoffRate = 90;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
@@ -134,9 +135,11 @@ var main = {
 
     // Rate/Goal
     var rating = '';
-    if (item.rate < minRate) {
+    if (item.rate < cutoffRate) {
       rating = 'is-danger'
-    } else if (item.rate > minRate && item.rate < idealRate) {
+    } else if (item.rate < minRate) {
+      rating = 'is-warning'
+    } else if (item.rate <= idealRate) {
       rating = 'is-info';
     } else if (item.rate > idealRate) {
       rating = 'is-success';
@@ -145,15 +148,15 @@ var main = {
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
-                  <span class="tag ${rating}">${ item.rate } <img src="images/slp.png" class="slp-icon-tiny"></span>
-                  <span class="tag">${ item.reqRate } <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag ${rating}">${ item.rate }</span>
+                  <span class="tag">${ item.reqRate }</span>
                 </span>
               </span>
             </td>`;
 
     // SLP
     row += `<td class="success right">
-              <span class="tag">${helper.formatNumber(item.slp)} <img src="images/slp.png" class="slp-icon-tiny"></span>
+              <span class="tag">${helper.formatNumber(item.slp)}</span>
             </td>`;
 
     // Total Fee
@@ -226,7 +229,7 @@ var main = {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1',
         success: function(result){
           scholarData[i].slp = result.total - result.claimable_total;
-          scholarData[i].rate = Math.floor(scholarData[i].slp / date) + 90;
+          scholarData[i].rate = Math.floor(scholarData[i].slp / date);
           scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
           scholarData[i].slpEarned = Math.ceil(scholarData[i].slp * (scholarData[i].earnRate / 100));
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;

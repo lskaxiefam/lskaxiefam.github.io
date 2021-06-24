@@ -39,7 +39,8 @@ body {
 }
 
 img.avatar {
-  height: 50px;
+  height: 30px;
+  width: 30px;
 }
 
 table {
