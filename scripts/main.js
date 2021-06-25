@@ -12,11 +12,12 @@ var scholarData = [
     "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
     "axieRoninAddress": "ronin:dfa1d3954b381a97340201db1cd89a8372e0fa22",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 100,
+    "earnRate": 1,
     "updated": false
   },
   {
@@ -25,11 +26,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x57a8BC681247e29dA20567D7993f624138dA70B1",
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 100,
+    "earnRate": 1,
     "updated": false
   },
   {
@@ -38,11 +40,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
     "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -53,11 +56,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x62DDb5652A3ACA021A0bEF278991D215Ec91918e",
     "axieRoninAddress": "ronin:3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -66,11 +70,12 @@ var scholarData = [
     "axieMetamaskAddress": "0xa2D9a05dA208a318C37bC225fd27265FEbc076A0",
     "axieRoninAddress": "ronin:80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -79,11 +84,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x4B9DAc484cc74549062f7eF318a1127D7A746792",
     "axieRoninAddress": "ronin:a9e8010713620e43543c0b423e8613a95da5dca2",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -92,11 +98,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
     "axieRoninAddress": "ronin:3f801744857114c7456f1c7bbdd90ad83b77209c",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -105,11 +112,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x56891D61761637eBAd34F7Ed6940866fa2fb558E",
     "axieRoninAddress": "ronin:9583520c58416350bfa36256a2ffc12a19af1ecf",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -118,11 +126,12 @@ var scholarData = [
     "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
     "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
     "slp": 0,
+    "slpOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 65,
+    "earnRate": 0.65,
     "updated": false
   }
 ];
@@ -185,10 +194,9 @@ var main = {
   formatRowData: function(item) {
     var row = '';
     // Name
-    row += '<td><img src="' + item.avatar + '" class="avatar"></td>';
-
-    // Email
-    //row += '<td> **** </td>';
+    row += `<td>
+              <img title="${ item.account }" src="${ item.avatar }" class="avatar">
+            </td>`;
 
     // Account
     if (GOD_MODE) {
@@ -208,12 +216,7 @@ var main = {
     }
      
     row += `<td class="right">
-              <span class="control inline">
-                <span class="tags has-addons">
-                  <span class="tag ${ rating }">${ item.rate }</span>
-                  <span class="tag">${ item.reqRate }</span>
-                </span>
-              </span>
+              <span class="tag ${ rating }">${ item.rate }</span>
             </td>`;
 
     // SLP
@@ -282,11 +285,14 @@ var main = {
       (function (i) {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1',
         success: function(result){
-          scholarData[i].slp = result.total - result.claimable_total;
-          scholarData[i].rate = Math.floor(scholarData[i].slp / date);
-          scholarData[i].reqRate = Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
-          scholarData[i].slpEarned = Math.ceil(scholarData[i].slp * (scholarData[i].earnRate / 100));
-          scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
+          var claimable = result.claimable_total + scholarData[i].slpOffset;
+          var total = result.total;
+          var slpThisMonth = result.total - claimable;
+          scholarData[i].slp = slpThisMonth;
+          scholarData[i].rate = scholarData[i].slp <= 0 ? 0 : Math.floor(scholarData[i].slp / date);
+          scholarData[i].reqRate = scholarData[i].slp <= 0 ? 0 : Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
+          scholarData[i].slpEarned = Math.ceil(total * scholarData[i].earnRate);
+          scholarData[i].slpFee = total - scholarData[i].slpEarned;
           scholarData[i].updated = true;
 
           if (main.isDataReady()) { 
