@@ -5,7 +5,7 @@ var cutoffRate = 90;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
-  
+
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
     "account":"LSK | King Leon",
@@ -289,7 +289,10 @@ var main = {
           scholarData[i].slpFee = scholarData[i].slp - scholarData[i].slpEarned;
           scholarData[i].updated = true;
 
-          if (main.isDataReady()) { main.appendData(scholarData); }
+          if (main.isDataReady()) { 
+            main.appendData(scholarData);
+          }
+
         }});
       })(i);
     }
@@ -298,6 +301,7 @@ var main = {
 
 // Initialize!
 $(document).ready(function() {
+  
   main.tryEnableGodMode();
   main.getSlpPrice();
   main.getAllScholarSlp();

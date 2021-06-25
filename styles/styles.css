@@ -4,8 +4,8 @@ body {
 
 .tool-button-wrapper {
   position: absolute;
-  right: 16px;
-  top: 26px;
+  right: 15px;
+  top: 20px;
 }
 .inline {
   display: inline-block;
