@@ -5,27 +5,9 @@ var cutoffRate = 90;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
-  {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/824494/axie/axie-full-transparent.png",
-    "name":"LSK",
-    "fullName": "Leon Kennedy",
-    "email":"vmargallobadilla@lavabit.com",
-    "account":"LSK | Nemesis",
-    "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
-    "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
-    "slp": 0,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 100,
-    "updated": false
-  },
+  
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
-    "name":"LSB",
-    "fullName": "Lavlee Badilla",
-    "email":"leonkennedy@lavabit.com",
     "account":"LSK | King Leon",
     "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
     "axieRoninAddress": "ronin:dfa1d3954b381a97340201db1cd89a8372e0fa22",
@@ -39,9 +21,6 @@ var scholarData = [
   },
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/464498/axie/axie-full-transparent.png",
-    "name":"DB",
-    "fullName": "Daniel Badilla",
-    "email":"zeekillingmachine98@gmail.com",
     "account":"LSK | Iyaaa!",
     "axieMetamaskAddress": "0x57a8BC681247e29dA20567D7993f624138dA70B1",
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
@@ -54,10 +33,22 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/824494/axie/axie-full-transparent.png",
+    "account":"LSK | Scam",
+    "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
+    "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
+    "slp": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 65,
+    "updated": false
+  },
+  {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/715964/axie/axie-full-transparent.png",
     "name":"REM",
     "fullName": "Ronn Margallo",
-    "email":"philip.c.p.badilla.genesis@gmail.com",
     "account":"LSK | Turon",
     "axieMetamaskAddress": "0x62DDb5652A3ACA021A0bEF278991D215Ec91918e",
     "axieRoninAddress": "ronin:3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
@@ -71,9 +62,6 @@ var scholarData = [
   },
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/770689/axie/axie-full-transparent.png",
-    "name":"AZM",
-    "fullName": "Alei Margallo",
-    "email":"lsksch04@gmail.com",
     "account":"LSK | Sugar",
     "axieMetamaskAddress": "0xa2D9a05dA208a318C37bC225fd27265FEbc076A0",
     "axieRoninAddress": "ronin:80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
@@ -87,9 +75,6 @@ var scholarData = [
   },
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/558430/axie/axie-full-transparent.png",
-    "name":"JBP",
-    "fullName": "Jan Bernard Payumo",
-    "email":"lsksch04@gmail.com",
     "account":"LSK | Bee",
     "axieMetamaskAddress": "0x4B9DAc484cc74549062f7eF318a1127D7A746792",
     "axieRoninAddress": "ronin:a9e8010713620e43543c0b423e8613a95da5dca2",
@@ -101,6 +86,45 @@ var scholarData = [
     "earnRate": 65,
     "updated": false
   },
+  {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/708178/axie/axie-full-transparent.png",
+    "account":"LSK | Kels",
+    "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
+    "axieRoninAddress": "ronin:3f801744857114c7456f1c7bbdd90ad83b77209c",
+    "slp": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 65,
+    "updated": false
+  },
+  {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/558294/axie/axie-full-transparent.png",
+    "account":"LSK | Jeff",
+    "axieMetamaskAddress": "0x56891D61761637eBAd34F7Ed6940866fa2fb558E",
+    "axieRoninAddress": "ronin:9583520c58416350bfa36256a2ffc12a19af1ecf",
+    "slp": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 65,
+    "updated": false
+  },
+  {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/904691/axie/axie-full-transparent.png",
+    "account":"LSK | Carnifex",
+    "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
+    "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
+    "slp": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 65,
+    "updated": false
+  }
 ];
 
 var helper = {
