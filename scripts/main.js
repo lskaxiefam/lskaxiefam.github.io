@@ -13,6 +13,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:dfa1d3954b381a97340201db1cd89a8372e0fa22",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 13,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -27,6 +28,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 21,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -41,6 +43,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 25,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -57,6 +60,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 22,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -71,6 +75,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 23,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -85,6 +90,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:a9e8010713620e43543c0b423e8613a95da5dca2",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 23,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -99,6 +105,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:3f801744857114c7456f1c7bbdd90ad83b77209c",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 25,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -113,6 +120,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:9583520c58416350bfa36256a2ffc12a19af1ecf",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 26,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -127,6 +135,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
     "slp": 0,
     "slpOffset": 0,
+    "daysOffset": 25,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -140,11 +149,17 @@ var helper = {
   formatNumber: function(num) {
     return Number(num).toLocaleString('en');
   },
-  sortBySlpAsc: function (a, b){
+  sortBySlpDesc: function (a, b){
     return ((a.slp > b.slp) ? -1 : ((a.slp < b.slp) ? 1 : 0));
   },
-  sortBySlpDesc: function (a, b){
+  sortBySlpAsc: function (a, b){
     return ((a.slp < b.slp) ? -1 : ((a.slp > b.slp) ? 1 : 0));
+  },
+  sortByRateDesc: function (a, b){
+    return ((a.rate > b.rate) ? -1 : ((a.rate < b.rate) ? 1 : 0));
+  },
+  sortByRateAsc: function (a, b){
+    return ((a.rate < b.rate) ? -1 : ((a.rate > b.rate) ? 1 : 0));
   },
   getUrlVars: function() {
     var vars = [], hash;
@@ -249,7 +264,7 @@ var main = {
     var totalSlpFee = 0;
     var totalFee = 0;
 
-    scholarData.sort(helper.sortBySlpAsc);
+    scholarData.sort(helper.sortByRateDesc);
     $.each(data, function (key, item) {
       totalSlpEarned += item.slpEarned;
       totalEarned += item.slpEarned * slpPriceInPhp;
@@ -289,7 +304,7 @@ var main = {
           var total = result.total;
           var slpThisMonth = result.total - claimable;
           scholarData[i].slp = slpThisMonth;
-          scholarData[i].rate = scholarData[i].slp <= 0 ? 0 : Math.floor(scholarData[i].slp / date);
+          scholarData[i].rate = scholarData[i].slp <= 0 ? 0 : Math.floor(scholarData[i].slp / (date - scholarData[i].daysOffset));
           scholarData[i].reqRate = scholarData[i].slp <= 0 ? 0 : Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
           scholarData[i].slpEarned = Math.ceil(total * scholarData[i].earnRate);
           scholarData[i].slpFee = total - scholarData[i].slpEarned;
