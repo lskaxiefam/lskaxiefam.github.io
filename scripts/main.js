@@ -5,7 +5,6 @@ var cutoffRate = 90;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
-
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
     "account":"LSK | King Leon",
@@ -28,27 +27,12 @@ var scholarData = [
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 21,
+    "daysOffset": 20,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 1,
-    "updated": false
-  },
-  {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/824494/axie/axie-full-transparent.png",
-    "account":"LSK | Scam",
-    "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
-    "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 25,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
     "updated": false
   },
   {
@@ -99,10 +83,40 @@ var scholarData = [
     "updated": false
   },
   {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/904691/axie/axie-full-transparent.png",
+    "account":"LSK | Carnifex",
+    "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
+    "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 25,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/708178/axie/axie-full-transparent.png",
     "account":"LSK | Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
     "axieRoninAddress": "ronin:3f801744857114c7456f1c7bbdd90ad83b77209c",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 25,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
+    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/824494/axie/axie-full-transparent.png",
+    "account":"LSK | Scam",
+    "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
+    "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
     "slp": 0,
     "slpOffset": 0,
     "daysOffset": 25,
@@ -127,27 +141,12 @@ var scholarData = [
     "slpFee": 0,
     "earnRate": 0.65,
     "updated": false
-  },
-  {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/904691/axie/axie-full-transparent.png",
-    "account":"LSK | Carnifex",
-    "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
-    "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 25,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
-    "updated": false
   }
 ];
 
 var helper = {
   formatNumber: function(num) {
-    return Number(num).toLocaleString('en');
+    return Number(num).toFixed(2).toLocaleString('en');
   },
   sortBySlpDesc: function (a, b){
     return ((a.slp > b.slp) ? -1 : ((a.slp < b.slp) ? 1 : 0));
