@@ -144,7 +144,10 @@ var scholarData = [
 
 var helper = {
   formatNumber: function(num) {
-    return Number(num).toFixed(2).toLocaleString('en');
+    return Number(num).toLocaleString('en-US');
+  },
+  formatMoney: function(num) {
+    return Number(num).toLocaleString('en-US', {style: "decimal", minimumFractionDigits: 2});
   },
   sortBySlpDesc: function (a, b){
     return ((a.slp > b.slp) ? -1 : ((a.slp < b.slp) ? 1 : 0));
@@ -244,7 +247,7 @@ var main = {
     }
     
     // Total Payout
-    var earnedPhp = helper.formatNumber(item.slpEarned * slpPriceInPhp);
+    var earnedPhp = helper.formatMoney(item.slpEarned * slpPriceInPhp);
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
