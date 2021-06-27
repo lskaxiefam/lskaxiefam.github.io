@@ -4,6 +4,8 @@ var minRate = 100;
 var cutoffRate = 100;
 var idealRate = 150;
 var slpPriceInPhp = 0;
+var highestRate = 0;
+
 var scholarData = [
   {
     "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
@@ -212,11 +214,13 @@ var main = {
   formatRowData: function(item) {
     var row = '';
     // Name
-    // row += `<td>
-    //           <img title="${ item.account }" src="${ item.avatar }" class="avatar">
-    //         </td>`;
+    var crown = '';
+    if (highestRate === item.rate) {
+      crown = '<i class="fas fa-crown first"></i>';
+    }
+
     row += `<td>
-              <span class="tag">${ item.account }</span>
+              <span class="tag">${ item.account }</span> ${crown}
             </td>`;
 
     // Account
@@ -235,7 +239,7 @@ var main = {
     } else if (item.rate >= idealRate) {
       rating = 'is-success';
     }
-     
+
     row += `<td class="right">
               <span class="tag ${ rating }">${ item.rate }</span>
             </td>`;
@@ -273,7 +277,11 @@ var main = {
     var totalFee = 0;
 
     scholarData.sort(helper.sortByRateDesc);
+
     $.each(data, function (key, item) {
+      if (highestRate === 0) {
+        highestRate = item.rate;
+      }
       totalSlpEarned += item.slpEarned;
       totalEarned += item.slpEarned * slpPriceInPhp;
       totalSlpFee += item.slpFee;
