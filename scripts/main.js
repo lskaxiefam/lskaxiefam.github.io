@@ -174,6 +174,9 @@ var helper = {
   },
   getLastDayOfMonth: function(y,m){
     return  new Date(y, m +1, 0).getDate();
+  },
+  closeAnnouncement: function() {
+    
   }
 }
 
@@ -235,8 +238,9 @@ var main = {
             </td>`;
 
     // SLP
-    row += `<td class="success right">
-              <span class="tag">${ helper.formatNumber(item.slp) }</span>
+    var slpMonthlyStatus = item.slp >= minSlp ? 'is-success' : 'is-light';
+    row += `<td class="right">
+              <span class="tag ${slpMonthlyStatus}">${ helper.formatNumber(item.slp) }</span>
             </td>`;
 
     // Total Fee
@@ -247,12 +251,13 @@ var main = {
     }
     
     // Total Payout
+    var slpPayoutStatus = item.slpEarned >= minSlp ? 'is-success' : 'is-dark';
     var earnedPhp = helper.formatMoney(item.slpEarned * slpPriceInPhp);
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
-                  <span class="tag">${helper.formatNumber(item.slpEarned)} <img src="images/slp.png" class="slp-icon-tiny"></span>
-                  <span class="tag is-dark"><small class="money">${earnedPhp}</small></span>
+                  <span class="tag ${slpPayoutStatus}">${helper.formatNumber(item.slpEarned)} <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag is-light"><small class="money">${earnedPhp}</small></span>
                 </span>
               </span>
             </td>`
