@@ -1,0 +1,200 @@
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <title>LSK Axie Fam - Beast Breading History</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LSK Axie Fam - Beast Breading History">
+  <script src="../vendor/jquery/jquery-3.6.0.min.js"></script>
+  
+  <link rel="stylesheet" href="../vendor/fa/css/all.min.css">
+  <link rel="stylesheet" href="../vendor/bulma/bulma.min.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+    #breedingHistory {
+      width: 100%;
+      height: 100vh;
+      border: 1px solid lightgray;
+      background-color: #333333;
+    }
+  </style>
+</head>
+<body class="is-dark">
+<h1></h1>
+<div id="breedingHistory"></div>
+
+<script type="text/javascript">
+
+var nodes = null;
+var edges = null;
+var network = null;
+var mateImagePath = 'https://whatemoji.org/wp-content/uploads/2020/07/Red-Heart-Emoji.png';
+function getImagePath(id) {
+  if (id === undefined) {
+    return `https://storage.googleapis.com/axie-cdn/avatars/egg/beast-beast-egg-full-transparent.png`;
+  } else {
+    return `https://storage.googleapis.com/assets.axieinfinity.com/axies/${id}/axie/axie-full-transparent.png`;
+  }
+}
+
+function draw() {
+  // create list of axies
+  nodes = [
+    // BEAST Origin
+    { id: 1, shape: "circularImage", image: getImagePath(931798), label: "931798 (100%)" },
+    { id: 2, shape: "circularImage", image: getImagePath(864419), label: "864419 (99%)" },
+    { id: 3, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // First Gen
+    { id: 4, shape: "circularImage", image: getImagePath(), label: "1103854" },
+    { id: 5, shape: "circularImage", image: getImagePath(), label: "1103879" },
+    { id: 6, shape: "circularImage", image: getImagePath(), label: "1103981" },
+    { id: 7, shape: "circularImage", image: getImagePath(), label: "1104000" },
+
+    // PLANT Origin
+    { id: 1000, shape: "circularImage", image: getImagePath(670835), label: "670835 (95%)" },
+    { id: 1001, shape: "circularImage", image: getImagePath(715964), label: "715964 (94%)" },
+    { id: 1002, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // First Gen
+    { id: 1003, shape: "circularImage", image: getImagePath(904727), label: "904727 (88%)" },
+    { id: 1004, shape: "circularImage", image: getImagePath(904846), label: "904846 (79%)" },
+    { id: 1005, shape: "circularImage", image: getImagePath(904799), label: "904799 (93%)" },
+    { id: 1006, shape: "circularImage", image: getImagePath(904751), label: "904751 (99%)" },
+    { id: 1007, shape: "circularImage", image: getImagePath(904691), label: "904691 (94%)" },
+    // New Buy
+    { id: 1008, shape: "circularImage", image: getImagePath(944040), label: "944040 (93%)" },
+    { id: 1009, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // Second Gen
+    { id: 1010, shape: "circularImage", image: getImagePath(), label: "1100259" },
+    { id: 1011, shape: "circularImage", image: getImagePath(), label: "1100351" },
+    { id: 1012, shape: "circularImage", image: getImagePath(), label: "1100276" },
+    { id: 1013, shape: "circularImage", image: getImagePath(), label: "1100494" },
+    
+    // REPTILE Origin
+    { id: 2000, shape: "circularImage", image: getImagePath(558294), label: "558294 (42%)" },
+    { id: 2001, shape: "circularImage", image: getImagePath(823689), label: "823689 (66%)" },
+    { id: 2002, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // First Gen
+    { id: 2003, shape: "circularImage", image: getImagePath(), label: "1007973" },
+    { id: 2004, shape: "circularImage", image: getImagePath(), label: "1008014" },
+    { id: 2005, shape: "circularImage", image: getImagePath(), label: "1007958" },
+    { id: 2006, shape: "circularImage", image: getImagePath(), label: "1007999" },
+
+    // AQUA Origin
+    { id: 3000, shape: "circularImage", image: getImagePath(758882), label: "758882 (79%)" },
+    { id: 3001, shape: "circularImage", image: getImagePath(463929), label: "463929 (73%)" },
+    { id: 3002, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    { id: 3003, shape: "circularImage", image: getImagePath(618454), label: "618454 (86%)" },
+    { id: 3004, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // First Gen
+    { id: 3005, shape: "circularImage", image: getImagePath(921470), label: "921470 (57%)" },
+    { id: 3006, shape: "circularImage", image: getImagePath(921462), label: "921462 (64%)" },
+    { id: 3007, shape: "circularImage", image: getImagePath(921602), label: "921602" },
+
+    // BUG Origin
+    { id: 4000, shape: "circularImage", image: getImagePath(772963), label: "772963 (96%)" },
+    { id: 4001, shape: "circularImage", image: getImagePath(770689), label: "770689 (92%)" },
+    { id: 4002, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // First Gen
+    { id: 4003, shape: "circularImage", image: getImagePath(923385), label: "923385 (78%)" },
+    { id: 4004, shape: "circularImage", image: getImagePath(923704), label: "923704 (92%)" },
+  ];
+
+  var partnerArrow = {
+      to: {
+        enabled: true,
+        type: 'arrow',
+      },
+    };
+  var siblingArrow = {
+      to: {
+        enabled: true,
+        type: 'inv_curve',
+      },
+    }
+  // create connections between people
+  // value corresponds with the amount of contact between two people
+  edges = [
+    // Beasts
+    { from: 1, to: 3, value: 1},
+    { from: 2, to: 3, value: 1},
+    { from: 3, to: 4},
+    { from: 4, to: 5},
+    { from: 5, to: 6},
+    { from: 6, to: 7},
+
+    // Plants
+    { from: 1000, to: 1002 , value: 1},
+    { from: 1001, to: 1002 , value: 1},
+    { from: 1002, to: 1003 },
+    { from: 1003, to: 1004 },
+    { from: 1004, to: 1005 },
+    { from: 1005, to: 1006 },
+    { from: 1006, to: 1007 },
+    { from: 1007, to: 1009 , value: 1},
+    { from: 1008, to: 1009 , value: 1},
+    { from: 1009, to: 1010 },
+    { from: 1010, to: 1011 },
+    { from: 1011, to: 1012 },
+    { from: 1012, to: 1013 },
+
+    // Reptile
+    { from: 2000, to: 2002 , value: 1},
+    { from: 2001, to: 2002 , value: 1},
+    { from: 2002, to: 2003 },
+    { from: 2003, to: 2004 },
+    { from: 2004, to: 2005 },
+    { from: 2005, to: 2006 },
+
+    // Aqua
+    { from: 3000, to: 3002 , value: 1},
+    { from: 3001, to: 3002 , value: 1},
+    { from: 3002, to: 3005 },
+    { from: 3005, to: 3006 },
+    { from: 3001, to: 3004 , value: 1},
+    { from: 3003, to: 3004 , value: 1},
+    { from: 3004, to: 3007 },
+
+    // Bug
+    { from: 4000, to: 4002 , value: 1},
+    { from: 4001, to: 4002 , value: 1},
+    { from: 4002, to: 4003 },
+    { from: 4003, to: 4004 },
+  ];
+
+  // create a network
+  var container = document.getElementById("breedingHistory");
+  var data = {
+    nodes: nodes,
+    edges: edges,
+  };
+
+  var options = {
+    nodes: {
+      borderWidth: 4,
+      size: 30,
+      color: {
+        border: "#222222",
+        background: "#666666",
+      },
+      font: { color: "#eeeeee" },
+    },
+    edges: {
+      color: "lightgray",
+    },
+  };
+  network = new vis.Network(container, data, options);
+}
+
+window.addEventListener("load", () => {
+  draw();
+});
+
+</script>
+
+</body>
+</html>
