@@ -9,11 +9,13 @@ body {
 }
 
 .fas.top-player {
-  color:#e8d90c
+  color:#e8d90c;
+  font-size: 7px;
 }
 
 .fas.top-rate {
   color: #0ce8df;
+  font-size: 7px;
 }
 
 .inline {

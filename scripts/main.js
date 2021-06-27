@@ -219,8 +219,13 @@ var main = {
     if (topPlayer === item.account) {
       topPlayerCrown = '<i class="fas fa-crown top-player" title="Highest SLP this month"></i>';
     }
+    var topRateCrown = '';
+    if (highestRate === item.rate) {
+      topRateCrown = '<i class="fas fa-gem top-rate" title="Highest SLP this month"></i>';
+    }
+
     row += `<td>
-              <span class="tag">${ item.account }</span> ${ topPlayerCrown }
+               <span class="tag">${ item.account }</span> ${ topPlayerCrown } ${ topRateCrown }
             </td>`;
 
     // Account
@@ -229,23 +234,17 @@ var main = {
     }
 
     // Rate/Goal
-    var topRateCrown = '';
-    if (highestRate === item.rate) {
-      topRateCrown = '<i class="fas fa-gem top-rate" title="Highest SLP this month"></i>';
-    }
     var rating = '';
     if (item.rate < cutoffRate) {
       rating = 'is-danger'
-    } else if (item.rate < minRate) {
-      rating = 'is-warning'
     } else if (item.rate < idealRate) {
-      rating = 'is-info';
+      rating = 'is-light';
     } else if (item.rate >= idealRate) {
       rating = 'is-success';
     }
 
     row += `<td class="right">
-              ${ topRateCrown } <span class="tag ${ rating }">${ item.rate }</span>
+              <span class="tag ${ rating }">${ item.rate }</span>
             </td>`;
 
     // SLP
@@ -267,7 +266,7 @@ var main = {
     row += `<td class="right">
               <span class="control inline">
                 <span class="tags has-addons">
-                  <span class="tag ${slpPayoutStatus}">${helper.formatNumber(item.slpEarned)} <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag ${slpPayoutStatus}">${helper.formatNumber(item.slpEarned)}</span>
                   <span class="tag is-light"><small class="money">${earnedPhp}</small></span>
                 </span>
               </span>
