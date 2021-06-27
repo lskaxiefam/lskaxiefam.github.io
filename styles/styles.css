@@ -8,8 +8,12 @@ body {
   top: 20px;
 }
 
-.fas.first {
+.fas.top-player {
   color:#e8d90c
+}
+
+.fas.top-rate {
+  color: #0ce8df;
 }
 
 .inline {

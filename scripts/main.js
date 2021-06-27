@@ -4,6 +4,7 @@ var minRate = 100;
 var cutoffRate = 100;
 var idealRate = 150;
 var slpPriceInPhp = 0;
+var topPlayer = '';
 var highestRate = 0;
 
 var scholarData = [
@@ -29,7 +30,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 19,
+    "daysOffset": 17,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -44,7 +45,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 21,
+    "daysOffset": 19,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -59,7 +60,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 22,
+    "daysOffset": 20,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -74,7 +75,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:a9e8010713620e43543c0b423e8613a95da5dca2",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 22,
+    "daysOffset": 20,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -214,13 +215,12 @@ var main = {
   formatRowData: function(item) {
     var row = '';
     // Name
-    var crown = '';
-    if (highestRate === item.rate) {
-      crown = '<i class="fas fa-crown first"></i>';
+    var topPlayerCrown = '';
+    if (topPlayer === item.account) {
+      topPlayerCrown = '<i class="fas fa-crown top-player" title="Highest SLP this month"></i>';
     }
-
     row += `<td>
-              <span class="tag">${ item.account }</span> ${crown}
+              <span class="tag">${ item.account }</span> ${ topPlayerCrown }
             </td>`;
 
     // Account
@@ -229,6 +229,10 @@ var main = {
     }
 
     // Rate/Goal
+    var topRateCrown = '';
+    if (highestRate === item.rate) {
+      topRateCrown = '<i class="fas fa-gem top-rate" title="Highest SLP this month"></i>';
+    }
     var rating = '';
     if (item.rate < cutoffRate) {
       rating = 'is-danger'
@@ -241,7 +245,7 @@ var main = {
     }
 
     row += `<td class="right">
-              <span class="tag ${ rating }">${ item.rate }</span>
+              ${ topRateCrown } <span class="tag ${ rating }">${ item.rate }</span>
             </td>`;
 
     // SLP
@@ -276,12 +280,10 @@ var main = {
     var totalSlpFee = 0;
     var totalFee = 0;
 
-    scholarData.sort(helper.sortByRateDesc);
+    scholarData.sort(helper.sortBySlpDesc);
 
     $.each(data, function (key, item) {
-      if (highestRate === 0) {
-        highestRate = item.rate;
-      }
+      if (topPlayer === '') { topPlayer = item.account; }
       totalSlpEarned += item.slpEarned;
       totalEarned += item.slpEarned * slpPriceInPhp;
       totalSlpFee += item.slpFee;
@@ -323,6 +325,7 @@ var main = {
           scholarData[i].slp = slpThisMonth;
           // SLP per day
           scholarData[i].rate = scholarData[i].slp <= 0 ? 0 : Math.floor(scholarData[i].slp / (date - scholarData[i].daysOffset));
+          if (highestRate < scholarData[i].rate) { highestRate = scholarData[i].rate; }
           // SLP per day needed to reach minimum SLP per month quota
           scholarData[i].reqRate = scholarData[i].slp <= 0 ? 0 : Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
           // SLP payout
