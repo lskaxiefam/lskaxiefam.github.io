@@ -230,9 +230,9 @@ var main = {
       rating = 'is-danger'
     } else if (item.rate < minRate) {
       rating = 'is-warning'
-    } else if (item.rate < idealRate) {
+    } else if (item.rate <= idealRate) {
       rating = 'is-info';
-    } else if (item.rate > idealRate) {
+    } else if (item.rate >= idealRate) {
       rating = 'is-success';
     }
      
