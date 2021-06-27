@@ -1,7 +1,7 @@
 var GOD_MODE = false;
 var minSlp = 3000;
 var minRate = 100;
-var cutoffRate = 90;
+var cutoffRate = 100;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var scholarData = [
@@ -230,7 +230,7 @@ var main = {
       rating = 'is-danger'
     } else if (item.rate < minRate) {
       rating = 'is-warning'
-    } else if (item.rate <= idealRate) {
+    } else if (item.rate < idealRate) {
       rating = 'is-info';
     } else if (item.rate >= idealRate) {
       rating = 'is-success';
