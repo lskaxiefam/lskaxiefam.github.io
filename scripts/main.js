@@ -28,7 +28,7 @@ var scholarData = [
     "axieRoninAddress": "ronin:ddccc56fc5ba1b19f1975eac758f18b93c5e37c1",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 0,
+    "daysOffset": 26,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -92,20 +92,20 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  {
-    "account":"Sneaky",
-    "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
-    "axieRoninAddress": "ronin:22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 0,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
-    "updated": false
-  },
+  // {
+  //   "account":"Sneaky",
+  //   "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
+  //   "axieRoninAddress": "ronin:22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
+  //   "slp": 0,
+  //   "slpOffset": 0,
+  //   "daysOffset": 0,
+  //   "rate": 0,
+  //   "reqRate": 0,
+  //   "slpEarned": 0,
+  //   "slpFee": 0,
+  //   "earnRate": 0.65,
+  //   "updated": false
+  // },
   {
     "account":"Carnifex",
     "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
@@ -120,20 +120,20 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  {
-    "account":"Yatv",
-    "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
-    "axieRoninAddress": "ronin:f2274fcf63ebf77acff7334091b1522d215769cd",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 0,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
-    "updated": false
-  },
+  // {
+  //   "account":"Yatv",
+  //   "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
+  //   "axieRoninAddress": "ronin:f2274fcf63ebf77acff7334091b1522d215769cd",
+  //   "slp": 0,
+  //   "slpOffset": 0,
+  //   "daysOffset": 0,
+  //   "rate": 0,
+  //   "reqRate": 0,
+  //   "slpEarned": 0,
+  //   "slpFee": 0,
+  //   "earnRate": 0.65,
+  //   "updated": false
+  // },
   {
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
@@ -176,34 +176,34 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  {
-    "account":"JC",
-    "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
-    "axieRoninAddress": "ronin:7239b5c3705a4964e21bdbfebf7147260ad7ea18",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 0,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
-    "updated": false
-  },
-  {
-    "account":"Dummy",
-    "axieMetamaskAddress": "0x4EC10D980A1f8f7B25F6bAA941EF311832763977",
-    "axieRoninAddress": "ronin:3da2037225c120d557154cf138142eed6a1ccaf3",
-    "slp": 0,
-    "slpOffset": 0,
-    "daysOffset": 0,
-    "rate": 0,
-    "reqRate": 0,
-    "slpEarned": 0,
-    "slpFee": 0,
-    "earnRate": 0.65,
-    "updated": false
-  }
+  // {
+  //   "account":"JC",
+  //   "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
+  //   "axieRoninAddress": "ronin:7239b5c3705a4964e21bdbfebf7147260ad7ea18",
+  //   "slp": 0,
+  //   "slpOffset": 0,
+  //   "daysOffset": 0,
+  //   "rate": 0,
+  //   "reqRate": 0,
+  //   "slpEarned": 0,
+  //   "slpFee": 0,
+  //   "earnRate": 0.65,
+  //   "updated": false
+  // },
+  // {
+  //   "account":"Dummy",
+  //   "axieMetamaskAddress": "0x4EC10D980A1f8f7B25F6bAA941EF311832763977",
+  //   "axieRoninAddress": "ronin:3da2037225c120d557154cf138142eed6a1ccaf3",
+  //   "slp": 0,
+  //   "slpOffset": 0,
+  //   "daysOffset": 0,
+  //   "rate": 0,
+  //   "reqRate": 0,
+  //   "slpEarned": 0,
+  //   "slpFee": 0,
+  //   "earnRate": 0.65,
+  //   "updated": false
+  // }
 ];
 
 var helper = {
