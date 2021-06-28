@@ -9,7 +9,6 @@ var highestRate = 0;
 
 var scholarData = [
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/496853/axie/axie-full-transparent.png",
     "account":"King Leon",
     "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
     "axieRoninAddress": "ronin:dfa1d3954b381a97340201db1cd89a8372e0fa22",
@@ -24,7 +23,20 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/464498/axie/axie-full-transparent.png",
+    "account":"Nemesis",
+    "axieMetamaskAddress": "0xbf8d40f756c4e9b344388dce3d16aeb36df3af24",
+    "axieRoninAddress": "ronin:ddccc56fc5ba1b19f1975eac758f18b93c5e37c1",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 1,
+    "updated": false
+  },
+  {
     "account":"Iyaaa!",
     "axieMetamaskAddress": "0x57a8BC681247e29dA20567D7993f624138dA70B1",
     "axieRoninAddress": "ronin:e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
@@ -39,7 +51,6 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/715964/axie/axie-full-transparent.png",
     "account":"Turon",
     "axieMetamaskAddress": "0x62DDb5652A3ACA021A0bEF278991D215Ec91918e",
     "axieRoninAddress": "ronin:3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
@@ -54,7 +65,6 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/770689/axie/axie-full-transparent.png",
     "account":"Sugar",
     "axieMetamaskAddress": "0xa2D9a05dA208a318C37bC225fd27265FEbc076A0",
     "axieRoninAddress": "ronin:80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
@@ -69,7 +79,6 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/558430/axie/axie-full-transparent.png",
     "account":"Bee",
     "axieMetamaskAddress": "0x4B9DAc484cc74549062f7eF318a1127D7A746792",
     "axieRoninAddress": "ronin:a9e8010713620e43543c0b423e8613a95da5dca2",
@@ -84,7 +93,20 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/904691/axie/axie-full-transparent.png",
+    "account":"Sneaky",
+    "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
+    "axieRoninAddress": "ronin:22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
     "account":"Carnifex",
     "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
     "axieRoninAddress": "ronin:6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
@@ -99,7 +121,20 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/708178/axie/axie-full-transparent.png",
+    "account":"Yatv",
+    "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
+    "axieRoninAddress": "ronin:f2274fcf63ebf77acff7334091b1522d215769cd",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
     "axieRoninAddress": "ronin:3f801744857114c7456f1c7bbdd90ad83b77209c",
@@ -114,7 +149,6 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/824494/axie/axie-full-transparent.png",
     "account":"Scam",
     "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
     "axieRoninAddress": "ronin:2aa8c8a6471494296883db018c95853d947e0b3f",
@@ -129,13 +163,40 @@ var scholarData = [
     "updated": false
   },
   {
-    "avatar":"https://storage.googleapis.com/assets.axieinfinity.com/axies/558294/axie/axie-full-transparent.png",
     "account":"Jeff",
     "axieMetamaskAddress": "0x56891D61761637eBAd34F7Ed6940866fa2fb558E",
     "axieRoninAddress": "ronin:9583520c58416350bfa36256a2ffc12a19af1ecf",
     "slp": 0,
     "slpOffset": 0,
     "daysOffset": 25,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
+    "account":"JC",
+    "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
+    "axieRoninAddress": "ronin:7239b5c3705a4964e21bdbfebf7147260ad7ea18",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
+    "account":"Dummy",
+    "axieMetamaskAddress": "0x4EC10D980A1f8f7B25F6bAA941EF311832763977",
+    "axieRoninAddress": "ronin:3da2037225c120d557154cf138142eed6a1ccaf3",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -336,7 +397,23 @@ var main = {
           if (main.isDataReady()) { 
             main.appendData(scholarData);
           }
+        },
+        error: function(){
+          console.log(scholarData[i].account, 'Error retrieving SLP information');
+          scholarData[i].slp = 0;
+          // SLP per day
+          scholarData[i].rate = 0;
+          // SLP per day needed to reach minimum SLP per month quota
+          scholarData[i].reqRate = 150;
+          // SLP payout
+          scholarData[i].slpEarned = 0;
+          // SLP fee
+          scholarData[i].slpFee = 0;
+          scholarData[i].updated = true;
 
+          if (main.isDataReady()) { 
+            main.appendData(scholarData);
+          }
         }});
       })(i);
     }
