@@ -120,20 +120,20 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  // {
-  //   "account":"Yatv",
-  //   "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
-  //   "axieRoninAddress": "ronin:f2274fcf63ebf77acff7334091b1522d215769cd",
-  //   "slp": 0,
-  //   "slpOffset": 0,
-  //   "daysOffset": 0,
-  //   "rate": 0,
-  //   "reqRate": 0,
-  //   "slpEarned": 0,
-  //   "slpFee": 0,
-  //   "earnRate": 0.65,
-  //   "updated": false
-  // },
+  {
+    "account":"Yatv",
+    "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
+    "axieRoninAddress": "ronin:f2274fcf63ebf77acff7334091b1522d215769cd",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
   {
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
