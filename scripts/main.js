@@ -33,7 +33,7 @@ var scholarData = [
     "reqRate": 0,
     "slpEarned": 0,
     "slpFee": 0,
-    "earnRate": 1,
+    "earnRate": 0,
     "updated": false
   },
   {
@@ -392,6 +392,11 @@ var main = {
           scholarData[i].slpEarned = Math.ceil(total * scholarData[i].earnRate);
           // SLP fee
           scholarData[i].slpFee = total - scholarData[i].slpEarned;
+          if (scholarData[i].slpFee > 1800 && scholarData[i].earnRate > 0) {
+            var excess = scholarData[i].slpFee - 1800;
+            scholarData[i].slpEarned = scholarData[i].slpEarned + excess;
+            scholarData[i].slpFee = 1800;
+          }
           scholarData[i].updated = true;
 
           if (main.isDataReady()) { 
