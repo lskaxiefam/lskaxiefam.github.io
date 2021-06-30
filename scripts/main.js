@@ -368,9 +368,9 @@ var main = {
     }});
   },
   getAllScholarSlp: function() {
-    var now = new Date()
-    var date = now.getDate();
-    var lastday = helper.getLastDayOfMonth(now.getFullYear(), now.getMonth());
+    var now = new Date();
+    var date = now.getUTCDate();
+    var lastday = helper.getLastDayOfMonth(now.getUTCFullYear(), now.getUTCMonth());
     var daysLeft = lastday - date
     ui.daysLeft(daysLeft);
 
