@@ -1,4 +1,5 @@
 var GOD_MODE = false;
+var ADMIN = '0xbf8d40f756c4e9b344388dce3d16aeb36df3af24';
 var minSlp = 3000;
 var minRate = 100;
 var cutoffRate = 100;
@@ -6,7 +7,6 @@ var idealRate = 150;
 var slpPriceInPhp = 0;
 var topPlayer = '';
 var highestRate = 0;
-var ignoreFeeValue = 0;
 
 var scholarData = [
   {
@@ -206,6 +206,28 @@ var scholarData = [
   //   "updated": false
   // }
 ];
+var accounting = {
+  getTotalSlpEarned: function() {
+    var total = 0;
+    $.each(scholarData, function (key, scholar) {
+      total += scholar.slpEarned;
+    });
+    return total;
+  },
+  getTotalPhpEarned: function() {
+    return this.getTotalSlpEarned() * slpPriceInPhp;
+  },
+  getTotalSlpFee: function() {
+    var total = 0;
+    $.each(scholarData, function (key, scholar) {
+      total += scholar.slpFee;
+    });
+    return total;
+  },
+  getTotalPhpFee: function() {
+    return this.getTotalSlpFee() * slpPriceInPhp;
+  },
+}
 
 var helper = {
   formatNumber: function(num) {
@@ -326,7 +348,8 @@ var main = {
     var slpPayoutStatus = item.slpEarned >= minSlp ? 'is-success' : 'is-dark';
     var earnedPhp = helper.formatMoney(item.slpEarned * slpPriceInPhp);
     var formattedSlpEarned = helper.formatNumber(item.slpEarned);
-    if (item.earnRate === 0) {
+
+    if (item.axieMetamaskAddress === ADMIN) {
       slpPayoutStatus = 'is-dark';
       formattedSlpEarned = 'N/A';
     }
@@ -341,28 +364,20 @@ var main = {
     return row;
   },
   appendData: function(data) {
-    var totalSlpEarned = 0;
-    var totalEarned = 0;
-    var totalSlpFee = 0;
-    var totalFee = 0;
-
     scholarData.sort(helper.sortBySlpDesc);
+    topPlayer = data[0].account;
 
     $.each(data, function (key, item) {
-      if (topPlayer === '') { topPlayer = item.account; }
-      totalSlpEarned += item.slpEarned;
-      totalEarned += item.slpEarned * slpPriceInPhp;
-      totalSlpFee += item.slpFee;
-      totalFee += item.slpFee * slpPriceInPhp;
-
       var row = $('<tr>', { html: main.formatRowData(item) });
-
       row.appendTo($("#scholarsList tbody"));
     });
-    totalFee = totalFee - (ignoreFeeValue * slpPriceInPhp);
-    ui.totalSlpEarned(totalSlpEarned);
-    ui.totalSlpFee(totalSlpFee);
-    ui.totalFee(totalFee);
+
+    this.calculateSummary();
+  },
+  calculateSummary: function() {
+    ui.totalSlpEarned(accounting.getTotalSlpEarned());
+    ui.totalSlpFee(accounting.getTotalSlpFee());
+    ui.totalFee(accounting.getTotalPhpFee());
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
@@ -384,28 +399,42 @@ var main = {
       (function (i) {
         $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieMetamaskAddress + '/items/1',
         success: function(result){
-          var claimable = result.claimable_total + scholarData[i].slpOffset;
+          // claimed + unclaimed
           var total = result.total;
-          var slpThisMonth = result.total - claimable;
+          // claimed SLP
+          var claimed = result.claimable_total + scholarData[i].slpOffset;
+          // unclaimed SLP
+          var unclaimed = total - claimed;
+
           // SLP current month
-          scholarData[i].slp = slpThisMonth;
-          // SLP per day
-          scholarData[i].rate = scholarData[i].slp <= 0 ? 0 : Math.floor(scholarData[i].slp / (date - scholarData[i].daysOffset));
+          scholarData[i].slp = unclaimed;
+
+          // SLP rate per day
+          scholarData[i].rate = scholarData[i].slp > 0 ? Math.floor(scholarData[i].slp / (date - scholarData[i].daysOffset)) : 0;
           if (highestRate < scholarData[i].rate) { highestRate = scholarData[i].rate; }
+
           // SLP per day needed to reach minimum SLP per month quota
           scholarData[i].reqRate = scholarData[i].slp <= 0 ? 0 : Math.ceil((minSlp - scholarData[i].slp) / (lastday - date));
-          // SLP payout
+
+          // SLP payout based on claimed and unclaimed SLP
           scholarData[i].slpEarned = Math.ceil(total * scholarData[i].earnRate);
+
           // SLP fee
           scholarData[i].slpFee = total - scholarData[i].slpEarned;
+
+          // Recalculate if fee exceeds 1800 SLP
           if (scholarData[i].slpFee > 1800 && scholarData[i].earnRate > 0) {
             var excess = scholarData[i].slpFee - 1800;
             scholarData[i].slpEarned = scholarData[i].slpEarned + excess;
             scholarData[i].slpFee = 1800;
           }
+
           scholarData[i].updated = true;
-          if (scholarData[i].axieMetamaskAddress === '0xbf8d40f756c4e9b344388dce3d16aeb36df3af24') {
-            ignoreFeeValue = scholarData[i].slpFee;
+
+          // Do not count admin SLP
+          if (scholarData[i].axieMetamaskAddress === ADMIN) {
+            scholarData[i].slpEarned = 0;
+            scholarData[i].slpFee = 0;
           }
 
           if (main.isDataReady()) { 
