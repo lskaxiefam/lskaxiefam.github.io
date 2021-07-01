@@ -292,7 +292,7 @@ var ui = {
     this.hideStatsTable();
   },
   hideStatsTable: function() {
-    $('#statsTable').hide();
+    $('#scholarsList').hide();
   },
 }
 
