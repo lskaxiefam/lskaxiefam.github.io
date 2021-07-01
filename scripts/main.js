@@ -287,6 +287,9 @@ var ui = {
   daysLeft: function(value) {
     $('#daysLeft').html(value);
   },
+  showMaintenanceWarning: function(value) {
+    $('#maintenanceAlert').show();
+  }
 }
 
 var main = {
@@ -447,7 +450,10 @@ var main = {
             main.appendData(scholarData);
           }
         },
-        error: function(){
+        error: function(jqXHR, textStatus, errorThrown){
+          if (jqXHR.status === 403) {
+            ui.showMaintenanceWarning();
+          }
           console.log(scholarData[i].account, 'Error retrieving SLP information');
           scholarData[i].slp = 0;
           // SLP per day
