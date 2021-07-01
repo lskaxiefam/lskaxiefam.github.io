@@ -287,9 +287,13 @@ var ui = {
   daysLeft: function(value) {
     $('#daysLeft').html(value);
   },
-  showMaintenanceWarning: function(value) {
+  showMaintenanceWarning: function() {
     $('#maintenanceAlert').show();
-  }
+    this.hideStatsTable();
+  },
+  hideStatsTable: function() {
+    $('#statsTable').hide();
+  },
 }
 
 var main = {
