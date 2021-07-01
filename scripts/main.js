@@ -93,20 +93,20 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  // {
-  //   "account":"Sneaky",
-  //   "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
-  //   "axieRoninAddress": "22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
-  //   "slp": 0,
-  //   "slpOffset": 0,
-  //   "daysOffset": 0,
-  //   "rate": 0,
-  //   "reqRate": 0,
-  //   "slpEarned": 0,
-  //   "slpFee": 0,
-  //   "earnRate": 0.65,
-  //   "updated": false
-  // },
+  {
+    "account":"Sneaky",
+    "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
+    "axieRoninAddress": "22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
   {
     "account":"Carnifex",
     "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
@@ -121,20 +121,20 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   },
-  // {
-  //   "account":"Yatv",
-  //   "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
-  //   "axieRoninAddress": "f2274fcf63ebf77acff7334091b1522d215769cd",
-  //   "slp": 0,
-  //   "slpOffset": 0,
-  //   "daysOffset": 0,
-  //   "rate": 0,
-  //   "reqRate": 0,
-  //   "slpEarned": 0,
-  //   "slpFee": 0,
-  //   "earnRate": 0.65,
-  //   "updated": false
-  // },
+  {
+    "account":"Yatv",
+    "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
+    "axieRoninAddress": "f2274fcf63ebf77acff7334091b1522d215769cd",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 0,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
   {
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
