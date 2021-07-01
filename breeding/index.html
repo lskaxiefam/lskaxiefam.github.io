@@ -50,10 +50,10 @@ function draw() {
     { id: 2, shape: "circularImage", image: getImagePath(864419), label: "864419 (99%)" },
     { id: 3, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
     // First Gen
-    { id: 4, shape: "circularImage", image: getImagePath(), label: "1103854" },
-    { id: 5, shape: "circularImage", image: getImagePath(), label: "1103879" },
-    { id: 6, shape: "circularImage", image: getImagePath(), label: "1103981" },
-    { id: 7, shape: "circularImage", image: getImagePath(), label: "1104000" },
+    { id: 4, shape: "circularImage", image: getImagePath(1103854), label: "1103854 (94%)" },
+    { id: 5, shape: "circularImage", image: getImagePath(1103879), label: "1103879 (100%)" },
+    { id: 6, shape: "circularImage", image: getImagePath(1103981), label: "1103981 (100%)" },
+    { id: 7, shape: "circularImage", image: getImagePath(1104000), label: "1104000 (100%)" },
 
     // PLANT Origin
     { id: 1000, shape: "circularImage", image: getImagePath(670835), label: "670835 (95%)" },
@@ -69,11 +69,23 @@ function draw() {
     { id: 1008, shape: "circularImage", image: getImagePath(944040), label: "944040 (93%)" },
     { id: 1009, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
     // Second Gen
-    { id: 1010, shape: "circularImage", image: getImagePath(), label: "1100259" },
-    { id: 1011, shape: "circularImage", image: getImagePath(), label: "1100351" },
-    { id: 1012, shape: "circularImage", image: getImagePath(), label: "1100276" },
-    { id: 1013, shape: "circularImage", image: getImagePath(), label: "1100494" },
-    
+    { id: 1010, shape: "circularImage", image: getImagePath(1100259), label: "1100259 (86%)" },
+    { id: 1011, shape: "circularImage", image: getImagePath(1100351), label: "1100351 (95%)" },
+    { id: 1012, shape: "circularImage", image: getImagePath(1100276), label: "1100276 (90%)" },
+    { id: 1013, shape: "circularImage", image: getImagePath(1100494), label: "1100494 (92%)" },
+    // New Buy
+    { id: 1014, shape: "circularImage", image: getImagePath(993339), label: "993339 (63%)" },
+    { id: 1015, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // Third Gem
+    { id: 1016, shape: "circularImage", image: getImagePath(), label: "1338880" },
+    { id: 1017, shape: "circularImage", image: getImagePath(), label: "1338852" },
+    { id: 1018, shape: "circularImage", image: getImagePath(), label: "1338835" },
+    // New Buy
+    { id: 1019, shape: "circularImage", image: getImagePath(993339), label: "891996 (59%)" },
+    { id: 1020, shape: "circularImage", image: mateImagePath, label: "WooHoo!" },
+    // Fourth Gen
+    { id: 1021, shape: "circularImage", image: getImagePath(), label: "1338973" },
+
     // REPTILE Origin
     { id: 2000, shape: "circularImage", image: getImagePath(558294), label: "558294 (42%)" },
     { id: 2001, shape: "circularImage", image: getImagePath(823689), label: "823689 (66%)" },
@@ -141,6 +153,14 @@ function draw() {
     { from: 1010, to: 1011 },
     { from: 1011, to: 1012 },
     { from: 1012, to: 1013 },
+    { from: 1011, to: 1015 , value: 3},
+    { from: 1014, to: 1015 , value: 3},
+    { from: 1015, to: 1016 },
+    { from: 1016, to: 1017 },
+    { from: 1017, to: 1018 },
+    { from: 1014, to: 1020 , value: 3},
+    { from: 1019, to: 1020 , value: 3},
+    { from: 1020, to: 1021 },
 
     // Reptile
     { from: 2000, to: 2002 , value: 3},
