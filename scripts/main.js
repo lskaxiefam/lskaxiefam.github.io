@@ -8,7 +8,20 @@ var slpPriceInPhp = 0;
 var topPlayer = '';
 var highestRate = 0;
 var showScholarDetails = false;
-
+const MONTH = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 var scholarData = [
   {
     "account":"King Leon",
@@ -324,7 +337,8 @@ var ui = {
     var totalSlpInWalletPhp = helper.slpTpPhp(data.total);;
     var feePhp = helper.slpTpPhp(data.slpFee);;
     var payoutPhp = helper.slpTpPhp(data.slpEarned);;
-    var daysFarmed = 3;
+    var daysFarmed = new Date().getUTCDate();
+    var currentMonth = MONTH[new Date().getUTCMonth()].toUpperCase();
 
     return `
     <div class="card">
@@ -340,8 +354,8 @@ var ui = {
           <table>
             <thead>
               <tr>
-                <th colspan="2" style="text-align: center;">JULY STATS</th>
-                <th class="right">VALUE</th>
+                <th colspan="2" style="text-align: center;">${currentMonth} STATS</th>
+                <th class="right">in PHP</th>
               </tr>
             </thead>
             <tbody>
@@ -350,16 +364,16 @@ var ui = {
                 <td class="right">
                   ${slpPerDay}
                 </td>
-                <td class="right">
+                <td class="right value">
                   <small class="money">${slpPerDayPhp}</small>
                 </td>
               </tr>
               <tr>
-                <td>${daysFarmed} days</td>
+                <td>${daysFarmed} day(s)</td>
                 <td class="right">
                   ${slpThisMonth}
                 </td>
-                <td class="right">
+                <td class="right value">
                   <small class="money">${slpThisMonthPhp}</small>
                 </td>
               </tr>
@@ -369,8 +383,7 @@ var ui = {
           <table>
             <thead>
               <tr>
-                <th colspan="2" style="text-align: center;">MY WALLET</th>
-                <th class="right">VALUE</th>
+                <th colspan="3" style="text-align: center;">MY WALLET</th>
               </tr>
             </thead>
             <tbody>
@@ -379,7 +392,7 @@ var ui = {
                 <td class="right">
                   ${totalSlpInWallet}
                 </td>
-                <td class="right">
+                <td class="right value">
                   <small class="money">${totalSlpInWalletPhp}</small>
                 </td>
               </tr>
@@ -388,7 +401,7 @@ var ui = {
                 <td class="right">
                   - ${fee}
                 </td>
-                <td class="right">
+                <td class="right value">
                   - <small class="money">${feePhp}</small>
                 </td>
               </tr>

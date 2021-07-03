@@ -22,6 +22,10 @@ body {
   margin-bottom: 20px;
 }
 
+.value {
+  max-width: 60px;;
+}
+
 .inline {
   display: inline-block;
 }
