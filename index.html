@@ -71,10 +71,9 @@
   </section>
 
   <!-- ANNOUNCEMENT -->
-  <article class="message is-warning ml-3 mr-3">
+  <!-- <article class="message is-warning ml-3 mr-3">
     <div class="message-header">
       <p>ANNOUCEMENT!</p>
-      <!-- <button class="delete" aria-label="delete"></button> -->
     </div>
     <div class="message-body">
       <strong>July 1, 2021</strong> is the beginning of our probabtionary period. Each scholar must reach a minimum of <span class="tag">3,000 <img src="images/slp.png" class="slp-icon-small"></span> by <strong>July 31, 2021</strong> to pass the probabtionary period.
@@ -83,7 +82,7 @@
       <br/><br/>
       <a href="https://www.youtube.com/watch?v=ISXz5FsYx-U" target="_blank">[Watch] Earn 150 SLP per day</a>
     </div>
-  </article>
+  </article> -->
 
   <!-- DASH -->
   <section class="hero is-primary">
@@ -125,7 +124,15 @@
     </div>
   </section>
 
-  <div class="columns is-mobile is-centered ml-3 mr-3 mt-5 mb-5">
+  <div class="columns is-mobile is-centered ml-3 mr-3 mt-5">
+    <button title="Toggle Viewer" class="button" onclick="ui.toggleScholarViewer()">
+      <span class="icon is-small">
+        <i class="fas fa-exchange-alt"></i>
+      </span>
+    </button>
+  </div>
+
+  <div class="columns is-mobile is-centered ml-3 mr-3 mt-5">
     <!-- MAINTENANCE ANNOUNCEMENT -->
     <article class="message is-danger" id="maintenanceAlert" style="display: none;">
       <div class="message-header">
@@ -135,18 +142,21 @@
         Logout from your game and close the application from the background to avoid account issue/ban.
       </div>
     </article>
-
+    
+    <div id="scholarCardWrapper">
+    </div>
+    
     <!-- TABLE -->  
     <table class="table" id="scholarsList">
       <thead>
         <tr>
           <th><small>player</small></th>
           <th class="insight"><small>acct</small></th>
-          <th class="right" title="Daily SLP rate (reset every month)"><small><img src="images/slp.png" class="slp-icon-tiny"> / day</small></th>
+          <th class="right" title="Daily SLP rate (reset every month)"><small><img src="images/slp.png" class="slp-icon-tiny"> per day</small></th>
           <th class="right" title="Total SLP farmed this month"><small><img src="images/slp.png" class="slp-icon-tiny"> month</small></th>
           <th class="right insight"><small>total</small></th>
           <th class="right insight"><small>fee</small></th>
-          <th class="right" title="Total payout in SLP"><small>[aug 1] payout</small></th>
+          <th class="right" title="Total payout in SLP"><small>next payout</small></th>
         </tr>
       </thead>
       <tbody>

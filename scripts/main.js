@@ -7,12 +7,13 @@ var idealRate = 150;
 var slpPriceInPhp = 0;
 var topPlayer = '';
 var highestRate = 0;
+var showScholarDetails = false;
 
 var scholarData = [
   {
     "account":"King Leon",
     "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
-    "axieRoninAddress": "dfa1d3954b381a97340201db1cd89a8372e0fa22",
+    "axieRoninAddress": "0xdfa1d3954b381a97340201db1cd89a8372e0fa22",
     "slp": 0,
     "slpOffset": 0,
     "daysOffset": 0,
@@ -26,7 +27,7 @@ var scholarData = [
   {
     "account":"Nemesis",
     "axieMetamaskAddress": "0xbf8d40f756c4e9b344388dce3d16aeb36df3af24",
-    "axieRoninAddress": "ddccc56fc5ba1b19f1975eac758f18b93c5e37c1",
+    "axieRoninAddress": "0xddccc56fc5ba1b19f1975eac758f18b93c5e37c1",
     "slp": 0,
     "slpOffset": 499,
     "daysOffset": 0,
@@ -40,7 +41,7 @@ var scholarData = [
   {
     "account":"Iyaaa!",
     "axieMetamaskAddress": "0x57a8BC681247e29dA20567D7993f624138dA70B1",
-    "axieRoninAddress": "e270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
+    "axieRoninAddress": "0xe270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "slp": 0,
     "slpOffset": 1388,
     "daysOffset": 0,
@@ -54,7 +55,7 @@ var scholarData = [
   {
     "account":"Turon",
     "axieMetamaskAddress": "0x62DDb5652A3ACA021A0bEF278991D215Ec91918e",
-    "axieRoninAddress": "3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
+    "axieRoninAddress": "0x3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
     "slp": 0,
     "slpOffset": 1138,
     "daysOffset": 0,
@@ -68,7 +69,7 @@ var scholarData = [
   {
     "account":"Sugar",
     "axieMetamaskAddress": "0xa2D9a05dA208a318C37bC225fd27265FEbc076A0",
-    "axieRoninAddress": "80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
+    "axieRoninAddress": "0x80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
     "slp": 0,
     "slpOffset": 1027,
     "daysOffset": 0,
@@ -82,7 +83,7 @@ var scholarData = [
   {
     "account":"Bee",
     "axieMetamaskAddress": "0x4B9DAc484cc74549062f7eF318a1127D7A746792",
-    "axieRoninAddress": "a9e8010713620e43543c0b423e8613a95da5dca2",
+    "axieRoninAddress": "0xa9e8010713620e43543c0b423e8613a95da5dca2",
     "slp": 0,
     "slpOffset": 1304,
     "daysOffset": 0,
@@ -96,7 +97,7 @@ var scholarData = [
   {
     "account":"Sneaky",
     "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
-    "axieRoninAddress": "22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
+    "axieRoninAddress": "0x22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
     "slp": 0,
     "slpOffset": 0,
     "daysOffset": 0,
@@ -110,7 +111,7 @@ var scholarData = [
   {
     "account":"Carnifex",
     "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
-    "axieRoninAddress": "6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
+    "axieRoninAddress": "0x6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
     "slp": 0,
     "slpOffset": 931,
     "daysOffset": 0,
@@ -124,7 +125,7 @@ var scholarData = [
   {
     "account":"Yatv",
     "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
-    "axieRoninAddress": "f2274fcf63ebf77acff7334091b1522d215769cd",
+    "axieRoninAddress": "0xf2274fcf63ebf77acff7334091b1522d215769cd",
     "slp": 0,
     "slpOffset": 0,
     "daysOffset": 0,
@@ -138,7 +139,7 @@ var scholarData = [
   {
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
-    "axieRoninAddress": "3f801744857114c7456f1c7bbdd90ad83b77209c",
+    "axieRoninAddress": "0x3f801744857114c7456f1c7bbdd90ad83b77209c",
     "slp": 0,
     "slpOffset": 844,
     "daysOffset": 0,
@@ -152,7 +153,7 @@ var scholarData = [
   {
     "account":"Scam",
     "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
-    "axieRoninAddress": "2aa8c8a6471494296883db018c95853d947e0b3f",
+    "axieRoninAddress": "0x2aa8c8a6471494296883db018c95853d947e0b3f",
     "slp": 0,
     "slpOffset": 374,
     "daysOffset": 0,
@@ -166,7 +167,7 @@ var scholarData = [
   {
     "account":"Jeff",
     "axieMetamaskAddress": "0x56891D61761637eBAd34F7Ed6940866fa2fb558E",
-    "axieRoninAddress": "9583520c58416350bfa36256a2ffc12a19af1ecf",
+    "axieRoninAddress": "0x9583520c58416350bfa36256a2ffc12a19af1ecf",
     "slp": 0,
     "slpOffset": 716,
     "daysOffset": 0,
@@ -228,8 +229,10 @@ var accounting = {
     return this.getTotalSlpFee() * slpPriceInPhp;
   },
 }
-
 var helper = {
+  slpTpPhp: function(slp) {
+    return this.formatMoney(slp * slpPriceInPhp);
+  },
   formatNumber: function(num) {
     return Number(num).toLocaleString('en-US');
   },
@@ -266,7 +269,6 @@ var helper = {
 
   }
 }
-
 var ui = {
   slpPrice: function(value) {
     var payout1 = 2600 * value;
@@ -287,13 +289,129 @@ var ui = {
   daysLeft: function(value) {
     $('#daysLeft').html(value);
   },
+  toggleScholarViewer: function() {
+    showScholarDetails = !showScholarDetails;
+    this.updateScholarViewer();
+  },
+  updateScholarViewer: function() {
+    if (showScholarDetails) {
+      $('#scholarCardWrapper').show();
+      $('#scholarsList').hide();
+    } else {
+      $('#scholarsList').show();
+      $('#scholarCardWrapper').hide();
+    }
+  },
   showMaintenanceWarning: function() {
     $('#maintenanceAlert').show();
     this.hideStatsTable();
   },
   hideStatsTable: function() {
     $('#scholarsList').hide();
+    $('#scholarCardWrapper').hide();
   },
+  createScholarCard: function(data) {
+    var cardName = data.account;
+    var cardRoninAddress = data.axieRoninAddress;
+    var slpPerDay = helper.formatNumber(data.rate);
+    var slpThisMonth = helper.formatNumber(data.slp);
+    var totalSlpInWallet = helper.formatNumber(data.total);
+    var fee = helper.formatNumber(data.slpFee);
+    var payout = helper.formatNumber(data.slpEarned);
+
+    var slpPerDayPhp = helper.slpTpPhp(data.rate);
+    var slpThisMonthPhp = helper.slpTpPhp(data.slp);;
+    var totalSlpInWalletPhp = helper.slpTpPhp(data.total);;
+    var feePhp = helper.slpTpPhp(data.slpFee);;
+    var payoutPhp = helper.slpTpPhp(data.slpEarned);;
+    var daysFarmed = 3;
+
+    return `
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          
+          <div class="media-content">
+            <p class="title is-4">${cardName}</p>
+            <p class="subtitle is-6"><span class="tag is-info is-light">${cardRoninAddress}</span></p>
+          </div>
+        </div>        
+        <div class="content">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2" style="text-align: center;">JULY STATS</th>
+                <th class="right">VALUE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>per day</td>
+                <td class="right">
+                  ${slpPerDay}
+                </td>
+                <td class="right">
+                  <small class="money">${slpPerDayPhp}</small>
+                </td>
+              </tr>
+              <tr>
+                <td>${daysFarmed} days</td>
+                <td class="right">
+                  ${slpThisMonth}
+                </td>
+                <td class="right">
+                  <small class="money">${slpThisMonthPhp}</small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2" style="text-align: center;">MY WALLET</th>
+                <th class="right">VALUE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>total</td>
+                <td class="right">
+                  ${totalSlpInWallet}
+                </td>
+                <td class="right">
+                  <small class="money">${totalSlpInWalletPhp}</small>
+                </td>
+              </tr>
+              <tr>
+                <td>fee</td>
+                <td class="right">
+                  - ${fee}
+                </td>
+                <td class="right">
+                  - <small class="money">${feePhp}</small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          
+        </div>
+      </div>
+      <footer class="card-footer">
+        <span class="card-footer-item">Next Payout</span>
+        <span class="card-footer-item">
+          <strong>${payout} <img src="images/slp.png" class="slp-icon-tiny"></strong>
+          &nbsp;
+          (<small class="money">${payoutPhp}</small>)
+        </span>
+      </footer>
+    </div>`;
+  },
+  appendCard: function(scholar) {
+    var card = this.createScholarCard(scholar);
+    $(card).appendTo('#scholarCardWrapper')
+  }
 }
 
 var main = {
@@ -364,12 +482,7 @@ var main = {
       formattedSlpEarned = 'N/A';
     }
     row += `<td class="right">
-              <span class="control inline">
-                <span class="tags has-addons">
-                  <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
-                  <span class="tag is-light"><small class="money">${earnedPhp}</small></span>
-                </span>
-              </span>
+              <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
             </td>`
     return row;
   },
@@ -377,9 +490,11 @@ var main = {
     scholarData.sort(helper.sortBySlpDesc);
     topPlayer = data[0].account;
 
-    $.each(data, function (key, item) {
-      var row = $('<tr>', { html: main.formatRowData(item) });
+    $.each(data, function (key, scholar) {
+      var row = $('<tr>', { html: main.formatRowData(scholar) });
       row.appendTo($("#scholarsList tbody"));
+
+      ui.appendCard(scholar);
     });
 
     this.calculateSummary();
@@ -407,7 +522,7 @@ var main = {
 
     for (var i = 0; i < scholarData.length ; ++i) {
       (function (i) {
-        $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/0x' + scholarData[i].axieRoninAddress + '/items/1',
+        $.ajax({url: 'https://lunacia.skymavis.com/game-api/clients/' + scholarData[i].axieRoninAddress + '/items/1',
         success: function(result){
           // claimed + unclaimed
           var total = result.total;
@@ -481,7 +596,7 @@ var main = {
 
 // Initialize!
 $(document).ready(function() {
-  
+  ui.updateScholarViewer();
   main.tryEnableGodMode();
   main.getSlpPrice();
   main.getAllScholarSlp();

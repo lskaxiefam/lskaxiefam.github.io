@@ -18,6 +18,10 @@ body {
   font-size: 7px;
 }
 
+#scholarCardWrapper > * {
+  margin-bottom: 20px;
+}
+
 .inline {
   display: inline-block;
 }
