@@ -175,7 +175,7 @@ var scholarData = [
     "account":"Kels",
     "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
     "axieRoninAddress": "0x3f801744857114c7456f1c7bbdd90ad83b77209c",
-    "team": [0,1,4],
+    "team": [0,1,3],
     "slp": 0,
     "slpOffset": 844,
     "daysOffset": 0,
