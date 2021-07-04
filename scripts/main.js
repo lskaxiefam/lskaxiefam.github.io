@@ -198,7 +198,21 @@ var scholarData = [
     "axieRoninAddress": "0x3da2037225c120d557154cf138142eed6a1ccaf3",
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 0,
+    "daysOffset": 3,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false
+  },
+  {
+    "account":"Hobs",
+    "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
+    "axieRoninAddress": "0x7239b5c3705a4964e21bdbfebf7147260ad7ea18",
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 3,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -206,21 +220,6 @@ var scholarData = [
     "earnRate": 0.65,
     "updated": false
   }
-  // {
-  //   "account":"JC",
-  //   "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
-  //   "axieRoninAddress": "7239b5c3705a4964e21bdbfebf7147260ad7ea18",
-  //   "slp": 0,
-  //   "slpOffset": 0,
-  //   "daysOffset": 0,
-  //   "rate": 0,
-  //   "reqRate": 0,
-  //   "slpEarned": 0,
-  //   "slpFee": 0,
-  //   "earnRate": 0.65,
-  //   "updated": false
-  // },
-  
 ];
 var accounting = {
   getTotalSlpEarned: function() {
