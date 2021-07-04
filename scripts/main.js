@@ -7,7 +7,8 @@ var idealRate = 150;
 var slpPriceInPhp = 0;
 var topPlayer = '';
 var highestRate = 0;
-var showScholarDetails = false;
+var showScholarDetails = true;
+
 const MONTH = [
   'January',
   'February',
@@ -21,7 +22,7 @@ const MONTH = [
   'October',
   'November',
   'December',
-]
+];
 var scholarData = [
   {
     "account":"King Leon",
@@ -426,6 +427,40 @@ var ui = {
     $(card).appendTo('#scholarCardWrapper')
   }
 }
+var auth = {
+  identity: '',
+  tryAutoLogin: function() {
+    this.login(localStorage.getItem('identity'));
+  },
+  login: function(passcode) {
+    try {
+      this.identity = atob(passcode);
+    } catch {
+      // Swallow
+    }
+    
+    if (!this.isValidCredentials()) {
+      $('#passcode').addClass('is-danger');
+    } else {
+      localStorage.setItem('identity', passcode);
+      main.getAllScholarSlp();
+      this.closeForm();
+    }
+  },
+  isValidCredentials: function() {
+    return scholarData.filter(s => s.axieRoninAddress === this.identity).length > 0;
+  },
+  logout: function() {
+    localStorage.removeItem('identity');
+    location.reload();
+  },
+  closeForm: function() {
+    $('#loginForm').hide();
+  },
+  openForm: function() {
+    $('#loginForm').show();
+  },
+}
 
 var main = {
   tryEnableGodMode: function() {
@@ -445,9 +480,9 @@ var main = {
     if (highestRate === item.rate && item.slp > 0) {
       topRateCrown = '<i class="fas fa-gem top-rate" title="Highest SLP this month"></i>';
     }
-
+    var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : ''; 
     row += `<td>
-               <span class="tag">${ item.account }</span> ${ topPlayerCrown } ${ topRateCrown }
+               <span class="tag ${accountHighlight}">${ item.account }</span> ${ topPlayerCrown } ${ topRateCrown }
             </td>`;
 
     // Account
@@ -507,7 +542,9 @@ var main = {
       var row = $('<tr>', { html: main.formatRowData(scholar) });
       row.appendTo($("#scholarsList tbody"));
 
-      ui.appendCard(scholar);
+      if (GOD_MODE || scholar.axieRoninAddress === auth.identity) {
+        ui.appendCard(scholar);
+      }
     });
 
     this.calculateSummary();
@@ -609,8 +646,8 @@ var main = {
 
 // Initialize!
 $(document).ready(function() {
+  auth.tryAutoLogin();
   ui.updateScholarViewer();
   main.tryEnableGodMode();
   main.getSlpPrice();
-  main.getAllScholarSlp();
 });

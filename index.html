@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LSK Axie Fam - Dashboard">
   <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
-  
+
   <link rel="stylesheet" href="vendor/fa/css/all.min.css">
   <link rel="stylesheet" href="vendor/bulma/bulma.min.css">
   <link rel="stylesheet" href="styles/styles.css">
@@ -16,12 +16,7 @@
 <body class="is-dark">
   <!-- TOOL BOX -->
   <p class="buttons tool-button-wrapper">
-    <a title="Server Status" class="button" href="https://axie.zone/axie-infinity-server-status" target="_blank">
-      <span class="icon is-small">
-        <i class="fas fa-info-circle"></i>
-      </span>
-    </a>
-    <a title="Breeding Status" class="button" href="breeding/index.html">
+    <a title="Breeding Status" class="button insight" href="breeding/index.html">
       <span class="icon is-small">
         <i class="fas fa-bezier-curve"></i>
       </span>
@@ -29,6 +24,11 @@
     <button title="Arena Calculator" class="button" onclick="calc.open()">
       <span class="icon is-small">
         <i class="fas fa-calculator"></i>
+      </span>
+    </button>
+    <button title="Logout Calculator" class="button" onclick="auth.logout()">
+      <span class="icon is-small">
+        <i class="fas fa-sign-out-alt"></i>
       </span>
     </button>
   </p>
@@ -69,6 +69,29 @@
   <section class="section is-small" style="padding: 1.4em .75em !important;">
     <h1 class="title" style="text-align: left; color: white">LSK | Axie Fam</h1>
   </section>
+
+  <!-- ACCOUNT LOGIN-->
+  <div class="modal is-active" id="loginForm">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Welcome, Axie Fam!</p>
+      </header>
+      <section class="modal-card-body">
+        <blockquote>Get your passcode from King Leon via <span class="control inline">
+          <span class="tags has-addons">
+            <span class="tag is-dark"><i class="fab fa-discord"></i></span>
+            <span class="tag">Discord</span>
+          </span>
+        </span> to access dashboard.</blockquote>
+        <br/>
+        <input class="input is-normal" type="password" placeholder="Enter your passcode..." id="passcode">
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" onclick="auth.login(document.getElementById('passcode').value)">Login</button>
+      </footer>
+    </div>
+  </div>
 
   <!-- ANNOUNCEMENT -->
   <!-- <article class="message is-warning ml-3 mr-3">

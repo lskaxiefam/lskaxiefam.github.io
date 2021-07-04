@@ -21,7 +21,9 @@ body {
 #scholarCardWrapper > * {
   margin-bottom: 20px;
 }
-
+small {
+  font-size: 10px !important;
+}
 .value {
   max-width: 60px;;
 }
