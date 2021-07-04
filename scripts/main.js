@@ -530,9 +530,12 @@ var main = {
       slpPayoutStatus = 'is-dark';
       formattedSlpEarned = 'N/A';
     }
-    row += `<td class="right">
-              <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
-            </td>`
+    if (GOD_MODE) {
+      row += `<td class="right">
+                <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
+              </td>`;
+    }
+    
     return row;
   },
   appendData: function(data) {
