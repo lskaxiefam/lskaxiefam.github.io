@@ -497,6 +497,11 @@ var main = {
   },
   formatRowData: function(item) {
     var row = '';
+    // Team
+    row += `<td>
+              ${AXIE_CLASSES[item.team[0]] + AXIE_CLASSES[item.team[1]] + AXIE_CLASSES[item.team[2]]}
+            </td>`;
+
     // Name
     var topPlayerCrown = '';
     if (topPlayer === item.account && item.slp > 0) {
@@ -508,7 +513,6 @@ var main = {
     }
     var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : ''; 
     row += `<td>
-              ${AXIE_CLASSES[item.team[0]] + AXIE_CLASSES[item.team[1]] + AXIE_CLASSES[item.team[2]]}
                <span class="tag ${accountHighlight}">${ item.account }</span>
             </td>`;
 
