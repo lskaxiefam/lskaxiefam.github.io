@@ -190,7 +190,7 @@ var scholarData = [
     "account":"Scam",
     "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
     "axieRoninAddress": "0x2aa8c8a6471494296883db018c95853d947e0b3f",
-    "team": [0,4,4],
+    "team": [4,4,1],
     "slp": 0,
     "slpOffset": 374,
     "daysOffset": 0,
