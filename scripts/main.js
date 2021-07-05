@@ -569,7 +569,7 @@ var main = {
     return row;
   },
   appendData: function(data) {
-    scholarData.sort(helper.sortBySlpDesc);
+    scholarData.sort(helper.sortByRateDesc);
     topPlayer = data[0].account;
 
     $.each(data, function (key, scholar) {
