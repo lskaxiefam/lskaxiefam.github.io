@@ -583,7 +583,7 @@ var auth = {
 
 var main = {
   tryEnableGodMode: function() {
-    GOD_MODE = helper.getUrlVars()['mode'] === 'god';
+    GOD_MODE = helper.getUrlVars()['mode'] === 'god' && auth.identity === ADMIN;
     if (GOD_MODE) {
       $(".insight").removeClass("insight");
       $(".hide-insight").hide();
