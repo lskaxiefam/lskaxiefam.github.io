@@ -148,9 +148,19 @@
   </section>
 
   <div class="columns is-mobile is-centered ml-3 mr-3 mt-5">
-    <button title="Toggle Viewer" class="button" onclick="ui.toggleScholarViewer()">
+    <button title="Toggle Viewer" class="button mr-2" id="scholarPayslipBtn" onclick="ui.showViewer('scholarPayslip')">
       <span class="icon is-small">
-        <i class="fas fa-exchange-alt"></i>
+        <i class="fas fa-receipt"></i>
+      </span>
+    </button>
+    <button title="Toggle Viewer" class="button mr-2" id="scholarsListBtn" onclick="ui.showViewer('scholarsList')">
+      <span class="icon is-small">
+        <i class="fas fa-list-ol"></i>
+      </span>
+    </button>
+    <button title="Toggle Viewer" class="button" id="rankingBtn" onclick="ui.showViewer('ranking')">
+      <span class="icon is-small">
+        <i class="fas fa-trophy"></i>
       </span>
     </button>
   </div>
@@ -166,14 +176,15 @@
       </div>
     </article>
     
-    <div id="scholarCardWrapper">
+    <!-- PAYSLIP -->  
+    <div id="scholarPayslip">
     </div>
-    
-    <!-- TABLE -->  
+
+    <!-- TRACKER -->  
     <table class="table" id="scholarsList">
       <thead>
         <tr>
-          <<th><small>team</small></th>
+          <th><small>team</small></th>
           <th><small>player</small></th>
           <th class="insight"><small>acct</small></th>
           <th class="right" title="Daily SLP rate (reset every month)"><small><img src="images/slp.png" class="slp-icon-tiny"> per day</small></th>
@@ -181,6 +192,21 @@
           <th class="right insight"><small>total</small></th>
           <th class="right insight"><small>fee</small></th>
           <th class="right insight" title="Total payout in SLP"><small>next payout</small></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <!-- RANKING -->  
+    <table class="table" id="ranking">
+      <thead>
+        <tr>
+          <th><small>rank</small></th>
+          <th><small>player</small></th>
+          <th><small>rating</small></th>
+          <th><small>matches</small></th>
+          <th><small>win rate</small></th>
         </tr>
       </thead>
       <tbody>

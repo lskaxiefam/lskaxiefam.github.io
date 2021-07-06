@@ -49,7 +49,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 1,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 64510,
+      "rating": 1395,
+      "matches": 470,
+      "winRate": 50,
+    }
   },
   {
     "account":"Nemesis",
@@ -64,7 +70,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 10349,
+      "rating": 1801,
+      "matches": 189,
+      "winRate": 58,
+    }
   },
   {
     "account":"Iyaaa!",
@@ -79,7 +91,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 1,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 279081,
+      "rating": 940,
+      "matches": 212,
+      "winRate": 44,
+    }
   },
   {
     "account":"Turon",
@@ -94,7 +112,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 137459,
+      "rating": 1230,
+      "matches": 148,
+      "winRate": 51,
+    }
   },
   {
     "account":"Sugar",
@@ -109,7 +133,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 95298,
+      "rating": 1311,
+      "matches": 167,
+      "winRate": 50,
+    }
   },
   {
     "account":"Bee",
@@ -124,7 +154,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 130813,
+      "rating": 1241,
+      "matches": 155,
+      "winRate": 49,
+    }
   },
   {
     "account":"Sneaky",
@@ -139,7 +175,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 67893,
+      "rating": 1384,
+      "matches": 41,
+      "winRate": 61,
+    }
   },
   {
     "account":"Carnifex",
@@ -154,7 +196,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 52896,
+      "rating": 1438,
+      "matches": 137,
+      "winRate": 53,
+    }
   },
   {
     "account":"Yatv",
@@ -169,7 +217,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 148563,
+      "rating": 1212,
+      "matches": 59,
+      "winRate": 51,
+    }
   },
   {
     "account":"Kels",
@@ -184,7 +238,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 52065,
+      "rating": 1442,
+      "matches": 123,
+      "winRate": 54,
+    }
   },
   {
     "account":"Scam",
@@ -199,7 +259,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 269826,
+      "rating": 977,
+      "matches": 112,
+      "winRate": 42,
+    }
   },
   {
     "account":"Jeff",
@@ -214,7 +280,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 239519,
+      "rating": 1067,
+      "matches": 142,
+      "winRate": 47,
+    }
   },
   {
     "account":"Jpee",
@@ -229,7 +301,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 233218,
+      "rating": 1082,
+      "matches": 111,
+      "winRate": 45,
+    }
   },
   {
     "account":"Hobs",
@@ -244,7 +322,13 @@ var scholarData = [
     "slpEarned": 0,
     "slpFee": 0,
     "earnRate": 0.65,
-    "updated": false
+    "updated": false,
+    "stats": {
+      "rank": 197027,
+      "rating": 1152,
+      "matches": 33,
+      "winRate": 45,
+    }
   }
 ];
 var accounting = {
@@ -291,6 +375,9 @@ var helper = {
   sortByRateAsc: function (a, b){
     return ((a.rate < b.rate) ? -1 : ((a.rate > b.rate) ? 1 : 0));
   },
+  sortByRankingDesc: function (a, b){
+    return ((a.stats.rank < b.stats.rank) ? -1 : ((a.stats.rank > b.stats.rank) ? 1 : 0));
+  },
   getUrlVars: function() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -329,18 +416,18 @@ var ui = {
   daysLeft: function(value) {
     $('#daysLeft').html(value);
   },
-  toggleScholarViewer: function() {
-    showScholarDetails = !showScholarDetails;
-    this.updateScholarViewer();
+  hideAllViewers: function(){
+    $('#scholarPayslip').hide();
+    $('#scholarsList').hide();
+    $('#ranking').hide();
+    $('#scholarPayslipBtn').removeClass('is-info');
+    $('#scholarsListBtn').removeClass('is-info');
+    $('#rankingBtn').removeClass('is-info');
   },
-  updateScholarViewer: function() {
-    if (showScholarDetails) {
-      $('#scholarCardWrapper').show();
-      $('#scholarsList').hide();
-    } else {
-      $('#scholarsList').show();
-      $('#scholarCardWrapper').hide();
-    }
+  showViewer: function(id) {
+    this.hideAllViewers();
+    $(`#${id}`).show();
+    $(`#${id}Btn`).addClass('is-info');
   },
   showMaintenanceWarning: function() {
     $('#maintenanceAlert').show();
@@ -348,7 +435,7 @@ var ui = {
   },
   hideStatsTable: function() {
     $('#scholarsList').hide();
-    $('#scholarCardWrapper').hide();
+    $('#scholarPayslip').hide();
   },
   createScholarCard: function(data) {
     var cardName = data.account;
@@ -450,7 +537,7 @@ var ui = {
   },
   appendCard: function(scholar) {
     var card = this.createScholarCard(scholar);
-    $(card).appendTo('#scholarCardWrapper')
+    $(card).appendTo('#scholarPayslip')
   }
 }
 var auth = {
@@ -495,7 +582,7 @@ var main = {
       $(".insight").removeClass("insight");
     }
   },
-  formatRowData: function(item) {
+  formatScholarData: function(item) {
     var row = '';
     // Team
     row += `<td>
@@ -568,17 +655,55 @@ var main = {
     
     return row;
   },
+  formatRankingData: function(item) {
+    var row = '';
+    // Rank
+    row += `<td>
+                <span class="tag"># ${ helper.formatNumber(item.stats.rank) }</span>
+            </td>`;
+            
+    // Name
+    var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : ''; 
+    row += `<td>
+               <span class="tag ${accountHighlight}">${item.account}</span>
+            </td>`;
+
+    // Rating
+    row += `<td>
+                <span class="tag">${helper.formatNumber(item.stats.rating)}</span>
+            </td>`;
+
+    // Matches
+    row += `<td>
+                <span class="tag">${helper.formatNumber(item.stats.matches)}</span>
+            </td>`;
+
+    // Win Rate
+    row += `<td>
+                <span class="tag">${item.stats.winRate}%</span>
+            </td>`;
+
+    return row;
+  },
   appendData: function(data) {
-    scholarData.sort(helper.sortByRateDesc);
+    data.sort(helper.sortByRateDesc);
     topPlayer = data[0].account;
 
     $.each(data, function (key, scholar) {
-      var row = $('<tr>', { html: main.formatRowData(scholar) });
-      row.appendTo($("#scholarsList tbody"));
+      var scholars = $('<tr>', { html: main.formatScholarData(scholar) });
+      scholars.appendTo($("#scholarsList tbody"));
 
       if (GOD_MODE || scholar.axieRoninAddress === auth.identity) {
         ui.appendCard(scholar);
       }
+    });
+
+    var rankingData = JSON.parse(JSON.stringify(data));
+    rankingData.sort(helper.sortByRankingDesc);
+
+    $.each(rankingData, function (key, scholar) {
+      var rankings = $('<tr>', { html: main.formatRankingData(scholar) });
+      rankings.appendTo($("#ranking tbody"));
     });
 
     this.calculateSummary();
@@ -590,7 +715,7 @@ var main = {
   },
   isDataReady: function() {
     return scholarData.filter(function (scholar) { return scholar.updated === false }).length === 0;
-  },  
+  },
   getSlpPrice: function(){
     $.ajax({url: 'https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25&vs_currencies=php&include_24hr_change=true', success: function(result){
       slpPriceInPhp = result['0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25'].php;
@@ -681,7 +806,7 @@ var main = {
 // Initialize!
 $(document).ready(function() {
   auth.tryAutoLogin();
-  ui.updateScholarViewer();
+  ui.showViewer('scholarPayslip');
   main.tryEnableGodMode();
   main.getSlpPrice();
 });
