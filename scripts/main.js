@@ -1,5 +1,5 @@
 var GOD_MODE = false;
-var ADMIN = '0xbf8d40f756c4e9b344388dce3d16aeb36df3af24';
+var ADMIN = '0xddccc56fc5ba1b19f1975eac758f18b93c5e37c1';
 var minSlp = 3000;
 var minRate = 100;
 var cutoffRate = 100;
@@ -643,7 +643,7 @@ var main = {
     var earnedPhp = helper.formatMoney(item.slpEarned * slpPriceInPhp);
     var formattedSlpEarned = helper.formatNumber(item.slpEarned);
 
-    if (item.axieMetamaskAddress === ADMIN) {
+    if (item.axieRoninAddress === ADMIN) {
       slpPayoutStatus = 'is-dark';
       formattedSlpEarned = 'N/A';
     }
@@ -768,7 +768,7 @@ var main = {
           scholarData[i].updated = true;
 
           // Do not count admin SLP
-          if (scholarData[i].axieMetamaskAddress === ADMIN) {
+          if (scholarData[i].axieRoninAddress === ADMIN) {
             scholarData[i].slpEarned = 0;
             scholarData[i].slpFee = 0;
           }
