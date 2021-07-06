@@ -37,7 +37,7 @@ const MONTH = [
 ];
 var scholarData = [
   {
-    "account":"King Leon",
+    "account":"LavLee",
     "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
     "axieRoninAddress": "0xdfa1d3954b381a97340201db1cd89a8372e0fa22",
     "team": [0,1,2],
