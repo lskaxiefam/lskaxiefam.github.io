@@ -38,7 +38,6 @@ const MONTH = [
 var scholarData = [
   {
     "account":"LavLee",
-    "axieMetamaskAddress": "0xa4E56656423adc04c180d886D3e5933cD90a1c46",
     "axieRoninAddress": "0xdfa1d3954b381a97340201db1cd89a8372e0fa22",
     "team": [0,1,2],
     "slp": 0,
@@ -59,7 +58,6 @@ var scholarData = [
   },
   {
     "account":"Nemesis",
-    "axieMetamaskAddress": "0xbf8d40f756c4e9b344388dce3d16aeb36df3af24",
     "axieRoninAddress": "0xddccc56fc5ba1b19f1975eac758f18b93c5e37c1",
     "team": [0,1,2],
     "slp": 0,
@@ -80,7 +78,6 @@ var scholarData = [
   },
   {
     "account":"Iyaaa!",
-    "axieMetamaskAddress": "0x57a8BC681247e29dA20567D7993f624138dA70B1",
     "axieRoninAddress": "0xe270372e0cef4ef1c9a7b72ce8d1b1dbaf7de33d",
     "team": [0,1,2],
     "slp": 0,
@@ -101,7 +98,6 @@ var scholarData = [
   },
   {
     "account":"Turon",
-    "axieMetamaskAddress": "0x62DDb5652A3ACA021A0bEF278991D215Ec91918e",
     "axieRoninAddress": "0x3c8e77e2bf47676d2b4becd7717a9d597c8c450b",
     "team": [0,3,3],
     "slp": 0,
@@ -122,7 +118,6 @@ var scholarData = [
   },
   {
     "account":"Sugar",
-    "axieMetamaskAddress": "0xa2D9a05dA208a318C37bC225fd27265FEbc076A0",
     "axieRoninAddress": "0x80692f8b99025a0d89e0761766b8d1b45b5c8f0b",
     "team": [0,1,4],
     "slp": 0,
@@ -143,7 +138,6 @@ var scholarData = [
   },
   {
     "account":"Bee",
-    "axieMetamaskAddress": "0x4B9DAc484cc74549062f7eF318a1127D7A746792",
     "axieRoninAddress": "0xa9e8010713620e43543c0b423e8613a95da5dca2",
     "team": [0,1,4],
     "slp": 0,
@@ -164,7 +158,6 @@ var scholarData = [
   },
   {
     "account":"Sneaky",
-    "axieMetamaskAddress": "0x9F739c64C2E2D6c40A780Ddc9b2af7967bd22218",
     "axieRoninAddress": "0x22e0c67f4c3cfc2339ed84534e9a4e3cb3db897e",
     "team": [0,1,2],
     "slp": 0,
@@ -185,7 +178,6 @@ var scholarData = [
   },
   {
     "account":"Carnifex",
-    "axieMetamaskAddress": "0x0c563A9e667A275DB08d72706885a684Bfbb8cAd",
     "axieRoninAddress": "0x6ed44d6c72db82928d4fbc8aefe3f20c6b6a73d5",
     "team": [0,1,3],
     "slp": 0,
@@ -206,7 +198,6 @@ var scholarData = [
   },
   {
     "account":"Yatv",
-    "axieMetamaskAddress": "0x9DC83e9d41a09610a00aB7140033dD5DF7472cab",
     "axieRoninAddress": "0xf2274fcf63ebf77acff7334091b1522d215769cd",
     "team": [0,1,2],
     "slp": 0,
@@ -227,7 +218,6 @@ var scholarData = [
   },
   {
     "account":"Kels",
-    "axieMetamaskAddress": "0x8643f14b0c9550aeB7663925aCd3BF060301c4Fc",
     "axieRoninAddress": "0x3f801744857114c7456f1c7bbdd90ad83b77209c",
     "team": [0,1,3],
     "slp": 0,
@@ -248,9 +238,8 @@ var scholarData = [
   },
   {
     "account":"Scam",
-    "axieMetamaskAddress": "0x5B41479A7d2c1b31f564AC4FFD3fFb416D8dDcE9",
     "axieRoninAddress": "0x2aa8c8a6471494296883db018c95853d947e0b3f",
-    "team": [4,4,1],
+    "team": [4,4,2],
     "slp": 0,
     "slpOffset": 374,
     "daysOffset": 0,
@@ -269,7 +258,6 @@ var scholarData = [
   },
   {
     "account":"Jeff",
-    "axieMetamaskAddress": "0x56891D61761637eBAd34F7Ed6940866fa2fb558E",
     "axieRoninAddress": "0x9583520c58416350bfa36256a2ffc12a19af1ecf",
     "team": [0,1,3],
     "slp": 0,
@@ -290,7 +278,6 @@ var scholarData = [
   },
   {
     "account":"Jpee",
-    "axieMetamaskAddress": "0x4EC10D980A1f8f7B25F6bAA941EF311832763977",
     "axieRoninAddress": "0x3da2037225c120d557154cf138142eed6a1ccaf3",
     "team": [0,1,2],
     "slp": 0,
@@ -311,7 +298,6 @@ var scholarData = [
   },
   {
     "account":"Hobs",
-    "axieMetamaskAddress": "0x4D9DA6A04f5c6E5E028E7ba6B6Eac1FBab082F4E",
     "axieRoninAddress": "0x7239b5c3705a4964e21bdbfebf7147260ad7ea18",
     "team": [0,1,4],
     "slp": 0,
@@ -328,6 +314,26 @@ var scholarData = [
       "rating": 1152,
       "matches": 33,
       "winRate": 45,
+    }
+  },
+  {
+    "account":"JC",
+    "axieRoninAddress": "0x351cb756b59cbb4cffa34e33ca2a45a64edd28ac",
+    "team": [0,1,4],
+    "slp": 0,
+    "slpOffset": 0,
+    "daysOffset": 5,
+    "rate": 0,
+    "reqRate": 0,
+    "slpEarned": 0,
+    "slpFee": 0,
+    "earnRate": 0.65,
+    "updated": false,
+    "stats": {
+      "rank": 999999,
+      "rating": 700,
+      "matches": 0,
+      "winRate": 0,
     }
   }
 ];
@@ -580,12 +586,13 @@ var main = {
     GOD_MODE = helper.getUrlVars()['mode'] === 'god';
     if (GOD_MODE) {
       $(".insight").removeClass("insight");
+      $(".hide-insight").hide();
     }
   },
   formatScholarData: function(item) {
     var row = '';
     // Team
-    row += `<td>
+    row += `<td class="hide-insight">
               ${AXIE_CLASSES[item.team[0]] + AXIE_CLASSES[item.team[1]] + AXIE_CLASSES[item.team[2]]}
             </td>`;
 
@@ -603,11 +610,6 @@ var main = {
                <span class="tag ${accountHighlight}">${ item.account }</span>
             </td>`;
 
-    // Account
-    if (GOD_MODE) {
-      row += '<td><small>' + item.account + '</small></td>';
-    }
-
     // Rate/Goal
     var rating = '';
     if (item.rate < cutoffRate) {
@@ -618,25 +620,23 @@ var main = {
       rating = 'is-success';
     }
 
-    row += `<td class="right">
+    row += `<td class="right hide-insight">
               <span class="tag ${ rating }">${ item.rate }</span>
             </td>`;
 
     // SLP
     var slpMonthlyStatus = item.slp >= minSlp ? 'is-success' : 'is-light';
-    row += `<td class="right">
+    row += `<td class="right hide-insight">
               <span class="tag ${slpMonthlyStatus}">${ helper.formatNumber(item.slp) }</span>
             </td>`;
 
     // Total Fee
-    if (GOD_MODE) {
-      row += `<td class="right">
-                <span class="tag">${ helper.formatNumber(item.total) }</span>
-              </td>`;
-      row += `<td class="right">
-                <span class="tag">${ helper.formatNumber(item.slpFee) }</span>
-              </td>`;
-    }
+    row += `<td class="right insight">
+              <span class="tag">${ helper.formatNumber(item.total) }</span>
+            </td>`;
+    row += `<td class="right insight">
+              <span class="tag">${ helper.formatNumber(item.slpFee) }</span>
+            </td>`;
     
     // Total Payout
     var slpPayoutStatus = item.slpEarned >= minSlp ? 'is-success' : 'is-dark';
@@ -647,11 +647,9 @@ var main = {
       slpPayoutStatus = 'is-dark';
       formattedSlpEarned = 'N/A';
     }
-    if (GOD_MODE) {
-      row += `<td class="right">
-                <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
-              </td>`;
-    }
+    row += `<td class="right insight">
+              <span class="tag ${slpPayoutStatus}">${formattedSlpEarned}</span>
+            </td>`;
     
     return row;
   },
@@ -707,6 +705,7 @@ var main = {
     });
 
     this.calculateSummary();
+    this.tryEnableGodMode();
   },
   calculateSummary: function() {
     ui.totalSlpEarned(accounting.getTotalSlpEarned());
