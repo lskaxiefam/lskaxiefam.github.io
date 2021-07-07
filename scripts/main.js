@@ -6,6 +6,7 @@ var cutoffRate = 100;
 var idealRate = 150;
 var slpPriceInPhp = 0;
 var topPlayer = '';
+var totalSlpThisMonth = 0;
 var highestRate = 0;
 var showScholarDetails = true;
 
