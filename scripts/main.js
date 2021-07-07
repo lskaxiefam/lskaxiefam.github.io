@@ -621,7 +621,7 @@ var main = {
     }
 
     row += `<td class="right hide-insight">
-              <span class="tag ${ rating }">${ item.rate }</span>
+              <span class="tag ${ rating }">+${ item.rate }</span>
             </td>`;
 
     // SLP
