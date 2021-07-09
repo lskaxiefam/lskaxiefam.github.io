@@ -100,6 +100,22 @@ table {
   width: 100%;
 }
 
+.lsk-table tr {
+  background-color: #343535;
+}
+
+.lsk-table td, .lsk-table th {
+  border: none !important;
+}
+
+.lsk-table th {
+  color: #eae6e6;
+}
+
+.lsk-table small {
+  color: #eae6e6;
+}
+
 tr.danger {
   background-color: #f18a8a;
 }

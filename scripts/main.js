@@ -596,6 +596,8 @@ var main = {
   },
   formatScholarData: function(item) {
     var row = '';
+    var myData = item.axieRoninAddress === auth.identity;
+    var accountHighlight = myData ? 'tag is-info' : 'tag is-dark'; 
     // Team
     row += `<td class="hide-insight">
               ${AXIE_CLASSES[item.team[0]] + AXIE_CLASSES[item.team[1]] + AXIE_CLASSES[item.team[2]]}
@@ -610,9 +612,9 @@ var main = {
     if (highestRate === item.rate && item.slp > 0) {
       topRateCrown = '<i class="fas fa-gem top-rate" title="Highest SLP this month"></i>';
     }
-    var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : ''; 
+    
     row += `<td>
-               <span class="tag ${accountHighlight}">${ item.account }</span>
+               <span class="${accountHighlight}">${ item.account }</span>
             </td>`;
 
     // Rate/Goal
@@ -620,7 +622,7 @@ var main = {
     if (item.rate < cutoffRate) {
       rating = 'is-danger'
     } else if (item.rate < idealRate) {
-      rating = 'is-light';
+      rating = 'is-dark';
     } else if (item.rate >= idealRate) {
       rating = 'is-success';
     }
@@ -630,9 +632,9 @@ var main = {
             </td>`;
 
     // SLP
-    var slpMonthlyStatus = item.slp >= minSlp ? 'is-success' : 'is-light';
+    var slpMonthlyStatus = item.slp >= minSlp ? 'tag is-success' : 'tag is-dark';
     row += `<td class="right hide-insight">
-              <span class="tag ${slpMonthlyStatus}">${ helper.formatNumber(item.slp) }</span>
+              <span class="${slpMonthlyStatus}">${ helper.formatNumber(item.slp) }</span>
             </td>`;
 
     // Total Fee
@@ -660,30 +662,31 @@ var main = {
   },
   formatRankingData: function(item) {
     var row = '';
+    var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : 'is-dark'; 
+
     // Rank
     row += `<td>
-                <span class="tag"># ${ helper.formatNumber(item.stats.rank) }</span>
+                <span class="tag ${accountHighlight}"># ${ helper.formatNumber(item.stats.rank) }</span>
             </td>`;
             
     // Name
-    var accountHighlight = item.axieRoninAddress === auth.identity ? 'is-info' : ''; 
     row += `<td>
                <span class="tag ${accountHighlight}">${item.account}</span>
             </td>`;
 
     // Rating
     row += `<td>
-                <span class="tag">${helper.formatNumber(item.stats.rating)}</span>
+                <span class="tag ${accountHighlight}">${helper.formatNumber(item.stats.rating)}</span>
             </td>`;
 
     // Matches
     row += `<td>
-                <span class="tag">${helper.formatNumber(item.stats.matches)}</span>
+                <span class="tag ${accountHighlight}">${helper.formatNumber(item.stats.matches)}</span>
             </td>`;
 
     // Win Rate
     row += `<td>
-                <span class="tag">${item.stats.winRate}%</span>
+                <span class="tag ${accountHighlight}">${item.stats.winRate}%</span>
             </td>`;
 
     return row;
