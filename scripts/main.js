@@ -323,7 +323,7 @@ var scholarData = [
     "team": [0,1,4],
     "slp": 0,
     "slpOffset": 0,
-    "daysOffset": 5,
+    "daysOffset": 6,
     "rate": 0,
     "reqRate": 0,
     "slpEarned": 0,
@@ -410,6 +410,10 @@ var ui = {
     $('#slpPrice').html('₱' + helper.formatNumber(value));
     $('#payout1').html('₱' + helper.formatNumber(payout1));
     $('#payout2').html('₱' + helper.formatNumber(payout2));
+  },
+  myPayout: function(value) {
+    $('#myPayout').html(helper.formatNumber(value));
+    $('#myPayoutPhp').html('₱' + helper.formatNumber(value * slpPriceInPhp));
   },
   totalSlpEarned: function(value) {
     $('#totalSlpEarned').html(helper.formatNumber(value));
@@ -622,7 +626,7 @@ var main = {
     }
 
     row += `<td class="right hide-insight">
-              <span class="tag ${ rating }">+${ item.rate }</span>
+              <span class="tag ${ rating }">+${ item.rate } <img src="images/slp.png" class="slp-icon-tiny"></span>
             </td>`;
 
     // SLP
@@ -695,6 +699,10 @@ var main = {
       if (GOD_MODE || scholar.axieRoninAddress === auth.identity) {
         ui.appendCard(scholar);
       }
+
+      if (scholar.axieRoninAddress === auth.identity) {
+        ui.myPayout(scholar.slpEarned);
+      }
     });
 
     var rankingData = JSON.parse(JSON.stringify(data));
@@ -709,7 +717,6 @@ var main = {
     this.tryEnableGodMode();
   },
   calculateSummary: function() {
-    ui.totalSlpEarned(accounting.getTotalSlpEarned());
     ui.totalSlpFee(accounting.getTotalSlpFee());
     ui.totalFee(accounting.getTotalPhpFee());
   },
@@ -806,7 +813,7 @@ var main = {
 // Initialize!
 $(document).ready(function() {
   auth.tryAutoLogin();
-  ui.showViewer('scholarPayslip');
+  ui.showViewer('scholarsList');
   main.tryEnableGodMode();
   main.getSlpPrice();
 });

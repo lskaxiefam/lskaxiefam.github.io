@@ -88,6 +88,13 @@ img.avatar {
   height: 25px;
 }
 
+.is-death {
+  background-color: #292929;
+  color: #eae6e6;
+}
+.is-death .title {
+  color: #eae6e6;
+}
 table {
   font-size: 13px;
   width: 100%;

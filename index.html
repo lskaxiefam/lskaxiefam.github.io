@@ -108,39 +108,45 @@
   </article> -->
 
   <!-- DASH -->
-  <section class="hero is-small is-primary">
+  <section class="hero is-small is-death">
     <div class="hero-body">
       <nav class="level is-mobile insight">
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Total <img src="images/slp.png" class="slp-icon-small"> Fee</p>
-            <p class="title" id="totalSlpFee"></p>
+            <p class="title" id="totalSlpFee">-</p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">Total Fee</p>
-            <p class="title" id="totalFee"></p>
+            <p class="title" id="totalFee">-</p>
           </div>
         </div>
       </nav>
       <nav class="level is-mobile">
-        <div class="level-item has-text-centered">
+        <!-- <div class="level-item has-text-centered">
           <div>
             <p class="heading"><i class="fas fa-calendar-alt"></i> Days Left</p>
-            <p class="title" id="daysLeft"></p>
+            <p class="title" id="daysLeft">-</p>
           </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Total <img src="images/slp.png" class="slp-icon-small"> This Month</p>
-            <p class="title" id="totalSlpEarned">3,000 SLP</p>
-          </div>
-        </div>
+        </div> -->
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">SLP Price</p>
-            <p class="title" id="slpPrice"></p>
+            <p class="title" id="slpPrice">-</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">My<img src="images/slp.png" class="slp-icon-small"> Payout</p>
+            <p class="title" id="myPayout">-</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Payout PHP Value</p>
+            <p class="title" id="myPayoutPhp">-</p>
           </div>
         </div>
       </nav>
@@ -187,13 +193,13 @@
           <th colspan="4">Farming Ranking</th>
         </tr>
         <tr>
-          <th class="hide-insight"><small>team</small></th>
-          <th><small>player</small></th>
-          <th class="right hide-insight" title="Daily SLP rate (reset every month)"><small><img src="images/slp.png" class="slp-icon-tiny"> per day</small></th>
-          <th class="right hide-insight" title="Total SLP farmed this month"><small><img src="images/slp.png" class="slp-icon-tiny"> this month</small></th>
-          <th class="right insight"><small>total</small></th>
-          <th class="right insight"><small>fee</small></th>
-          <th class="right insight" title="Total payout in SLP"><small>next payout</small></th>
+          <th class="hide-insight"><small>TEAM</small></th>
+          <th><small>PLAYER</small></th>
+          <th class="right hide-insight" title="Daily SLP rate (reset every month)"><small>AVG. SLP</small></th>
+          <th class="right hide-insight" title="Total SLP farmed this month"><small><img src="images/slp.png" class="slp-icon-tiny"> THIS MONTH</small></th>
+          <th class="right insight"><small>TOTAL</small></th>
+          <th class="right insight"><small>FEE</small></th>
+          <th class="right insight" title="Total payout in SLP"><small>PAYOUT</small></th>
         </tr>
       </thead>
       <tbody>
