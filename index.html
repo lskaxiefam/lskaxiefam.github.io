@@ -1,12 +1,563 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="utf-8">
-  <title>AxieScholarTracker</title>
-  <base href="/">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <title>LSK Axie Fam Dashboard</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.31d6cfe0d16ae931b73c.css"></head>
-<body>
-  <app-root></app-root>
-<script src="runtime-es2017.99ec4d9632a49e153955.js" type="module"></script><script src="runtime-es5.99ec4d9632a49e153955.js" nomodule defer></script><script src="polyfills-es5.24cd9963389ce499c8e6.js" nomodule defer></script><script src="polyfills-es2017.421e5195d1f282334424.js" type="module"></script><script src="main-es2017.82a97509ba3ca6cdf5e1.js" type="module"></script><script src="main-es5.82a97509ba3ca6cdf5e1.js" nomodule defer></script>
+  <meta name="description" content="LSK Axie Fam - Dashboard">
+  <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
 
-</body></html>
+  <link rel="stylesheet" href="vendor/fa/css/all.min.css">
+  <link rel="stylesheet" href="vendor/bulma/bulma.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="is-dark">
+  <!-- TOOL BOX -->
+  <p class="buttons tool-button-wrapper">
+    <a title="Breeding Status" class="button insight" href="breeding/index.html">
+      <span class="icon is-small">
+        <i class="fas fa-bezier-curve"></i>
+      </span>
+    </a>
+    <button title="Arena Calculator" class="button" onclick="calc.open()">
+      <span class="icon is-small">
+        <i class="fas fa-calculator"></i>
+      </span>
+    </button>
+    <button title="Logout Calculator" class="button" onclick="auth.logout()">
+      <span class="icon is-small">
+        <i class="fas fa-sign-out-alt"></i>
+      </span>
+    </button>
+  </p>
+  
+  <!-- CALC MODAL -->
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <section class="hero is-primary is-info">
+        <div class="hero-body">
+          <nav class="level is-mobile">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">
+                  <i class="fas fa-star"></i>
+                  Energy
+                </p>
+                <p class="title" id="enemyEnergy">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">
+                  <i class="fas fa-sd-card"></i>
+                  Cards
+                </p>
+                <p class="title" id="enemyCards">0</p>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="calc.close()"></button>
+  </div>
+
+  <!-- HEADER -->
+  <section class="section is-small" style="padding: 1.4em .75em !important;">
+    <h1 class="title" style="text-align: left; color: white">LSK | Axie Fam</h1>
+  </section>
+
+  <!-- ACCOUNT LOGIN-->
+  <div class="modal is-active" id="loginForm">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Welcome, Axie Fam!</p>
+      </header>
+      <section class="modal-card-body">
+        <blockquote>Get your passcode from King Leon via <span class="control inline">
+          <span class="tags has-addons">
+            <span class="tag is-dark"><i class="fab fa-discord"></i></span>
+            <span class="tag">Discord</span>
+          </span>
+        </span> to access dashboard.</blockquote>
+        <br/>
+        <input class="input is-normal" type="password" placeholder="Enter your passcode..." id="passcode">
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" onclick="auth.login(document.getElementById('passcode').value)">Login</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT -->
+  <article class="message is-warning ml-3 mr-3">
+    <div class="message-header">
+      <p>ANNOUCEMENT!</p>
+    </div>
+    <div class="message-body">
+      <ul style="list-style: square;">
+        <li>
+          Payout will now be given every 2 weeks on every <strong>1st</strong> and <strong>16th</strong> day of the month.
+        </li>
+        <li>
+          Only players who played more than 2 weeks can claim their payout due to Sky Mavis locking period.
+        </li>
+        <li>
+          Your payout will be sent to your own Ronin wallet, which you need to <a href="https://www.youtube.com/watch?v=14H9v1R-R5c" target="_blank">create for yourself</a>.
+        </li>
+        <li>
+          Send your Ronin Wallet public address to King Leon on our <a href="https://discord.gg/f3DR8zeywK" target="_blank">discord</a> channel.
+        </li>
+        <li>
+          <strong>LSK | Axie Fam</strong> will not take custody of your earnings, hence you need to have your own Ronin Wallet.
+        </li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- DASH -->
+  <section class="hero is-small is-death">
+    <div class="hero-body">
+      <nav class="level is-mobile insight">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Total <img src="images/slp.png" class="slp-icon-small"> Fee</p>
+            <p class="title" id="totalSlpFee">-</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Total Fee</p>
+            <p class="title" id="totalFee">-</p>
+          </div>
+        </div>
+      </nav>
+      <nav class="level is-mobile">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">SLP Price</p>
+            <p class="title slp-price" id="slpPrice">-</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!---WALLET -->
+  <section class="hero is-small is-info ml-3 mr-3 mt-5" style="border-radius: 10px;">
+    <div class="hero-body">
+      <strong class="my-account">-</strong> <small class="tag is-info my-ronin-address"></small>
+      <button class="ghost-button" onclick="helper.copyMyRoninAddressToClipboard()">
+        <i class="fas fa-clone" style="cursor: pointer;"></i>
+      </button>
+      <div class="mt-4 mb-4" style="border-bottom: 1px solid white;">
+      </div>
+      <nav class="level is-mobile mb-2">
+        <div class="">
+          <div>
+            <p class="heading">NEXT PAYOUT</p>
+            <p class="title my-payout" id="myPayout">--</p>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <strong class="heading my-payout-php" id="myPayoutPhp">0.00</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="columns is-mobile is-centered ml-3 mr-3 mt-5">
+    <button title="My SLP" class="button mr-2" id="scholarPayslipBtn" onclick="ui.showViewer('scholarPayslip')">
+      <span class="icon is-small">
+        <i class="fas fa-receipt"></i>
+      </span>
+    </button>
+    <button title="SLP Ranking" class="button mr-2" id="scholarsListBtn" onclick="ui.showViewer('scholarsList')">
+      <span class="icon is-small">
+        <i class="fas fa-list-ol"></i>
+      </span>
+    </button>
+    <button title="Arena Ranking" class="button" id="rankingBtn" onclick="ui.showViewer('ranking')">
+      <span class="icon is-small">
+        <i class="fas fa-trophy"></i>
+      </span>
+    </button>
+  </div>
+
+  <div class="columns is-mobile is-centered ml-3 mr-3 mt-5">
+    <!-- MAINTENANCE ANNOUNCEMENT -->
+    <article class="message is-danger" id="maintenanceAlert" style="display: none;">
+      <div class="message-header">
+        <p>SERVER UNDER MAINTENANCE</p>
+      </div>
+      <div class="message-body">
+        Logout from your game and close the application from the background to avoid account issue/ban.
+      </div>
+    </article>
+    
+    <!-- PAYSLIP -->  
+    <div id="scholarPayslip" class="container payslip">
+    </div>
+
+    <!-- TRACKER -->  
+    <table class="table lsk-table" id="scholarsList">
+      <thead>
+        <tr>
+          <th colspan="4" style="text-align: center;"><small>SLP RANKING</small></th>
+        </tr>
+        <tr>
+          <th class="hide-insight"><small>TEAM</small></th>
+          <th><small>PLAYER</small></th>
+          <th class="right hide-insight" title="Daily SLP rate (reset every month)"><small>AVG. SLP</small></th>
+          <th class="right hide-insight" title="Total SLP farmed this month"><small><img src="images/slp.png" class="slp-icon-tiny"> THIS MONTH</small></th>
+          <th class="right insight"><small>TOTAL</small></th>
+          <th class="right insight"><small>FEE</small></th>
+          <th class="right insight" title="Total payout in SLP"><small>PAYOUT</small></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <!-- RANKING -->  
+    <table class="table lsk-table" id="ranking">
+      <thead>
+        <tr>
+          <th colspan="5" style="text-align: center;"><small>ARENA RANKING</small></th>
+        </tr>
+        <tr>
+          <th><small>RANK</small></th>
+          <th><small>PLAYER</small></th>
+          <th><small>RATING</small></th>
+          <th><small>MATCHES</small></th>
+          <th><small>WIN RATE</small></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMPORTANT -->
+  <section class="hero is-small is-danger">
+    <div class="hero-body">
+      <p class="title">
+        IMPORTANT!
+      </p>
+      <p class="subtitle">
+        Play by the rules to stay in the game.
+      </p>
+    </div>
+  </section>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-light">
+      <div class="content">
+        <ul>
+          <li>
+            Minimum 
+            <span class="tag">3,000 <img src="images/slp.png" class="slp-icon-small"></span>
+             on first month must be reached to pass probation period. <br/>
+             Starting on second month <span class="tag">3,750 <img src="images/slp.png" class="slp-icon-small"></span> per month is required to stay in the program.
+            <br/><br/> 
+          </li>
+          <li>
+            Players must take responsibilty/accountability of their account.<br/><br/> 
+          </li>
+          <li>
+            Players are not allowed to play multiple Axie accounts on a single device or use emulators.<br/><br/> 
+          </li>
+          <li>
+            If the Axie account gets banned, player will be removed from the program. All unclaimed 
+            <span class="control inline">
+              <span class="tags has-addons">
+                <span class="tag">SLP</span>
+                <span class="tag is-primary"><img src="images/slp.png" class="slp-icon-small"></span>
+              </span>
+            </span>
+             will be forfeited.<br/><br/> 
+          </li>
+          <li>
+            Join our  
+            <a href="https://discord.gg/f3DR8zeywK" target="_blank">
+              <span class="control inline">
+                <span class="tags has-addons">
+                  <span class="tag is-dark"><i class="fab fa-discord"></i></span>
+                  <span class="tag">Discord</span>
+                </span>
+              </span></a> to keep yourself up-to-date.
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <!-- PAYMENT INFO -->
+  <section class="hero is-small is-info">
+    <div class="hero-body">
+      <p class="title">
+        Payout Info
+      </p>
+      <p class="subtitle">
+        It's all in the bag!
+      </p>
+    </div>
+  </section>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-light">
+      <strong style="color:#c31e40">IMPORTANT: This is subject to change if there are new gameplay mechanics that directly or indirectly affects SLP farming. Any change will not affect SLP already earned.
+      </strong>
+      <div class="content">
+        <ul>
+          <li>
+            Payouts are claimed and distributed every <small class="tag is-info">1st</small> and <small class="tag is-info">16th</small> of the month before 
+            <span class="control inline">
+              <span class="tags has-addons">
+                <span class="tag is-info">8am</span>
+                <span class="tag is-dark">PST</span>
+              </span>
+            </span>
+            <br/>
+            <small>Payout can only be claimed if a player has played for at least <strong>2 weeks.</strong>
+            </small>
+            <br/><br/>
+          </li>
+          <li>
+            Payout is <small class="tag is-success">65%</small> of total 
+            <span class="control inline">
+              <span class="tags has-addons">
+                <span class="tag">SLP</span>
+                <span class="tag is-primary"><img src="images/slp.png" class="slp-icon-small"></span>
+              </span>
+            </span> farmed. 
+            <small class="tag is-danger">35%</small>
+            is deducated as fee. Fee is capped at 
+            <span class="tag">1,800 <img src="images/slp.png" class="slp-icon-tiny"></span> per month.
+            <br/>
+            <small>e.g.<br/> If you farmed a total of 
+              <span class="tag">4,000 <img src="images/slp.png" class="slp-icon-tiny"></span>
+                 
+              in a month, your payout will be 
+              <span class="control inline">
+                <span class="tags has-addons">
+                  <span class="tag" title="4000 x 0.65 = 2600">2,600 <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag is-primary" id="payout1" title="This is an estimate based on current SLP price on global market"></span>
+                </span>
+              </span>. The remaining 
+              <span class="tag" title="4000 x 0.35 = 1400">1,400 <img src="images/slp.png" class="slp-icon-tiny"></span> (35%) will be deducated as fee.</small>
+            <br/>
+            <small>e.g.<br/> If you farmed a total of <span class="tag">6,000 <img src="images/slp.png" class="slp-icon-tiny"></span> in a month, your payout will be
+              <span class="control inline">
+                <span class="tags has-addons">
+                  <span class="tag" title="6000 - 1800 = 4200">4,200 <img src="images/slp.png" class="slp-icon-tiny"></span>
+                  <span class="tag is-primary" id="payout2" title="This is an estimate based on current SLP price on global market"></span>
+                </span>
+              </span>. The fee will be capped at <span class="tag">1,800 <img src="images/slp.png" class="slp-icon-tiny"></span> instead of <span class="tag">2100 <img src="images/slp.png" class="slp-icon-tiny"></span>(35%).</small>
+            <br/><br/> 
+          </li>
+          <li>
+            Payouts will be deposited to players <a href="https://chrome.google.com/webstore/detail/ronin-wallet/fnjhmkhhmkbjkkabndcnnogagogbneec" target="_blank">Ronin Wallet</a> in 
+            <span class="control inline">
+              <span class="tags has-addons">
+                <span class="tag">SLP</span>
+                <span class="tag is-primary"><img src="images/slp.png" class="slp-icon-small"></span>
+              </span>
+            </span>.
+            <br/>
+            <small><a href="https://www.youtube.com/watch?v=14H9v1R-R5c" target="_blank">Set-up your Ronin Wallet on Mobile</a></small>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <!-- NEWBIE GUIDES -->
+  <section class="hero is-small is-primary">
+    <div class="hero-body">
+      <p class="title">
+        Before you START!
+      </p>
+      <p class="subtitle">
+        Watch the following videos before you start your journey.
+      </p>
+    </div>
+  </section>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-light">
+      <div class="content">
+        <ol>
+          <li>
+            <a href="https://www.youtube.com/watch?v=ISXz5FsYx-U" target="_blank">Introduction and Farming Efficiency Guide</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=WUb4YVhR6bE" target="_blank">ARENA Technical Details</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=XLtLvwctwEQ" target="_blank">Don't get BANNED!</a>
+          </li>
+        </ol>
+        <strong>Adventure Ruins Guide</strong>
+        <table>
+          <tr>
+            <th>Ruin</th>
+            <th>Level</th>
+            <th>EXP</th>
+            <th>SLP</th>
+          </tr>
+          <tr>
+            <td>1</td><td>Lv1</td><td>51</td><td>1</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Lv1</td><td>59</td><td>1</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Lv2</td><td>111</td><td>1</td>
+          </tr>
+          <tr>
+            <td>4</td><td>Lv4</td><td>118</td><td>1</td>
+          </tr>
+          <tr>
+            <td>5</td><td>Lv4</td><td>141</td><td>2</td>
+          </tr>
+          <tr>
+            <td>6</td><td>Lv6</td><td>199</td><td>2</td>
+          </tr>
+          <tr>
+            <td>7</td><td>Lv7</td><td><strong>256</strong></td><td>2</td>
+          </tr>
+          <tr>
+            <td>8</td><td>Lv9</td><td>237</td><td>2</td>
+          </tr>
+          <tr>
+            <td>9</td><td>Lv10</td><td>282</td><td>2</td>
+          </tr>
+          <tr>
+            <td>10</td><td>Lv12</td><td>300</td><td>4</td>
+          </tr>
+          <tr>
+            <td>11</td><td>Lv13</td><td>344</td><td>4</td>
+          </tr>
+          <tr>
+            <td>12</td><td>Lv14</td><td><strong>429</strong></td><td>4</td>
+          </tr>
+          <tr>
+            <td>13</td><td>Lv15</td><td>378</td><td>4</td>
+          </tr>
+          <tr>
+            <td>14</td><td>Lv16</td><td>347</td><td>4</td>
+          </tr>
+          <tr>
+            <td>15</td><td>Lv16</td><td>358</td><td>6</td>
+          </tr>
+          <tr>
+            <td>16</td><td>Lv17</td><td><strong>402</strong></td><td>6</td>
+          </tr>
+          <tr>
+            <td>17</td><td>Lv18</td><td>367</td><td>6-10</td>
+          </tr>
+          <tr>
+            <td>18</td><td>Lv19</td><td><strong>446</strong></td><td>6-10</td>
+          </tr>
+          <tr>
+            <td>19</td><td>Lv20</td><td>434</td><td>6-10</td>
+          </tr>
+          <tr>
+            <td>20</td><td>Lv20</td><td>401</td><td>6-10</td>
+          </tr>
+          <tr>
+            <td>21</td><td>Lv23</td><td><strong>644</strong></td><td>10-20</td>
+          </tr>
+        </table>
+
+        <h3>TIPS [With Energy]</h3>
+        <ul>
+          <li>
+            Level up your Axies in Adventure Mode and advance to high level Ruins. More SLP is gained and makes it easier to reach 100/100 limit when playing in high level Ruins.
+          </li>
+          <li>
+            Try to level up your Axies to suggested levels before challenging higher level Ruins to maximize energy use.
+          </li>
+        </ul>
+        <h3>TIPS [No Energy]</h3>
+        <ul>
+          <li>
+            Get 5 wins in Arena Mode.
+          </li>
+          <li>
+            Play Adventure until max 100/100 SLP is achieved.
+          </li>
+          <li>
+            Complete daily quest and claim your 50 SLP reward.
+          </li>
+          <li>
+            Try to challenge higher Ruin levels to study enemy patterns.
+          </li>
+          <li>
+            You can complete 150 SLP daily even without energy.
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <!-- GUIDES -->
+  <section class="hero is-small is-success">
+    <div class="hero-body">
+      <p class="title">
+        Gameplay Guides and Info
+      </p>
+      <p class="subtitle">
+        Level up your game!
+      </p>
+    </div>
+  </section>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-light">
+      <div class="content">
+        <div class="content" style="text-align: center;">
+          <h2>Damage Advantage</h2>
+          <img src="images/RPS3.png" class="mb-3 mt-3">
+          <div style="text-align: left;">
+            <h2>Buffs</h2>
+            <ul style="list-style: none;">
+              <li>
+                <noscript><img width="37" height="34" class="wp-image-2682" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/Speedplus.png" alt="" /></noscript>
+                <img width="37" height="34" class="wp-image-2682 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/Speedplus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/Speedplus.png" alt=""> <strong>Speed Up</strong> – Increases Axies Speed by 20%. For a designated time. <em>Can stack.</em>
+              </li>
+              <li>
+                <noscript><img width="35" height="34" class="wp-image-2678" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleplus.png" alt="" /></noscript>
+                <img width="35" height="34" class="wp-image-2678 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleplus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleplus.png" alt=""> <strong>Morale Up</strong> – Increases Axies Morale by 20% . For a designated time. <em>Can stack.</em></li>
+              <li>
+                <noscript><img width="35" height="34" class="wp-image-2671" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackplus.png" alt="" /></noscript><img width="35" height="34" class="wp-image-2671 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackplus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackplus.png" alt=""> <strong>Attack Up</strong> – Increases Axies Attack by 20% . Stays until next attack. <em>Can stack. </em>
+              </li>
+            </ul>
+            <h2>Debuffs</h2>
+            <ul style="list-style: none;"><li><noscript><img width="33" height="34" class="wp-image-2668" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/Stun.png" alt="" /></noscript><img width="33" height="34" class="wp-image-2668 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/Stun.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/Stun.png" alt=""> <strong>Stun</strong> – Axie skips its next attack or defense. Stays until Axie tries to attack.</li><li><noscript><img width="35" height="34" class="wp-image-2669" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/aroma.png" alt="" /></noscript><img width="35" height="34" class="wp-image-2669 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/aroma.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/aroma.png" alt=""> <strong>Aroma</strong> – Axie will draw all incoming attacks. For a designated time.</li><li><noscript><img width="31" height="34" class="wp-image-2672" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_31,h_34/https://axieedge.com/wp-content/uploads/2020/02/chill.png" alt="" /></noscript><img width="31" height="34" class="wp-image-2672 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_31,h_34/https://axieedge.com/wp-content/uploads/2020/02/chill.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_31,h_34/https://axieedge.com/wp-content/uploads/2020/02/chill.png" alt=""> <strong>Chill</strong> – Axie cannot enter last stand. For a designated time.</li><li><noscript><img width="33" height="34" class="wp-image-2673" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/fear.png" alt="" /></noscript><img width="33" height="34" class="wp-image-2673 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/fear.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_33,h_34/https://axieedge.com/wp-content/uploads/2020/02/fear.png" alt=""> <strong>Fear </strong>– Axie cannot attack. For a designated time.</li><li><noscript><img width="34" height="34" class="wp-image-2674" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/fragile.png" alt="" /></noscript><img width="34" height="34" class="wp-image-2674 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/fragile.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/fragile.png" alt=""> <strong>Fragile</strong> – Shield takes 200% damage. For a designated time.</li><li><noscript><img width="45" height="34" class="wp-image-2675" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_45,h_34/https://axieedge.com/wp-content/uploads/2020/02/jinx.png" alt="" /></noscript><img width="45" height="34" class="wp-image-2675 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_45,h_34/https://axieedge.com/wp-content/uploads/2020/02/jinx.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_45,h_34/https://axieedge.com/wp-content/uploads/2020/02/jinx.png" alt=""> <strong>Jinx</strong> – Axie cannot score critical hits. For a designated time.</li><li><noscript><img width="34" height="34" class="wp-image-2676" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/lethal.png" alt="" /></noscript><img width="34" height="34" class="wp-image-2676 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/lethal.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_34,h_34/https://axieedge.com/wp-content/uploads/2020/02/lethal.png" alt=""> <strong>Lethal</strong> – Next hit on this Axie is always a critical strike. Stays until attacked.</li><li><noscript><img width="40" height="34" class="wp-image-2679" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_40,h_34/https://axieedge.com/wp-content/uploads/2020/02/poison.png" alt="" /></noscript><img width="40" height="34" class="wp-image-2679 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_40,h_34/https://axieedge.com/wp-content/uploads/2020/02/poison.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_40,h_34/https://axieedge.com/wp-content/uploads/2020/02/poison.png" alt=""> <strong>Poison</strong> – Axie loses 3hp each turn taken (by either team). Can stack. Stays until its removed.</li><li><noscript><img width="41" height="34" class="wp-image-2680" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/sleep.png" alt="" /></noscript><img width="41" height="34" class="wp-image-2680 lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/sleep.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/sleep.png" alt=""><strong> Sleep</strong> – Axie cannot defend next time it is hit. Stays until Axie tries to attack.</li><li><noscript><img width="41" height="34" class="wp-image-2683" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/stench.png" alt="" /></noscript><img width="41" height="34" class="wp-image-2683 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/stench.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_41,h_34/https://axieedge.com/wp-content/uploads/2020/02/stench.png" alt=""> <strong>Stench</strong> – Axie is ignored when there are 2 or more targets. For a designated time.</li><li><noscript><img width="37" height="34" class="wp-image-2681" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/speedminus.png" alt="" /></noscript><img width="37" height="34" class="wp-image-2681 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/speedminus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_37,h_34/https://axieedge.com/wp-content/uploads/2020/02/speedminus.png" alt=""> <strong>Speed Down</strong> – Decreases Axies speed by 20%. For a designated time. <em>Can Stack.</em></li><li><noscript><img width="35" height="34" class="wp-image-2677" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleminus.png" alt="" /></noscript><img width="35" height="34" class="wp-image-2677 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleminus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/moraleminus.png" alt=""> <strong>Morale Down</strong> – Decreases Axies morale by 20%. For a designated time. <em>Can Stack.</em></li><li><noscript><img width="35" height="34" class="wp-image-2670" style="width: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackminus.png" alt="" /></noscript><img width="35" height="34" class="wp-image-2670 ls-is-cached lazyloaded" style="width: 30px;" src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackminus.png" data-src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_35,h_34/https://axieedge.com/wp-content/uploads/2020/02/attackminus.png" alt=""> <strong>Attack Down</strong> – Decreases Axies attack by 20%. Stays until next attack. <em>Can Stack.</em></li></ul>      
+          </div>
+        </div>
+        
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=RHn3YzTd61I" target="_blank">[How to Play] Double Aquatic</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=cAd-tGhGONM" target="_blank">[How to Play] Bug + Reptile</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=FHCfqryPRnU" target="_blank">[How to Play] Beast + Reptile</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=RugOPR1DVX8" target="_blank">Cash-out SLP to PHP</a>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <script src="scripts/main-min.js"></script>
+  <script src="scripts/calc-min.js"></script>
+</body>
+</html>
