@@ -480,7 +480,7 @@ var ui = {
     var currentMonth = MONTH[new Date().getUTCMonth()].toUpperCase();
 
     return `
-    <div class="card">
+    <div class="card is-dark">
       <div class="card-content">
         <div class="media">
           
