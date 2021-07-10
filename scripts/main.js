@@ -361,6 +361,15 @@ var accounting = {
   },
 }
 var helper = {
+  copyMyRoninAddressToClipboard: function() {
+    navigator.clipboard.writeText(auth.identity)
+    .then(() => {
+      alert('Text copied to clipboard');
+    })
+    .catch(err => {
+      alert('Error in copying text: ', err);
+    });
+  },
   slpTpPhp: function(slp) {
     return this.formatMoney(slp * slpPriceInPhp);
   },
@@ -407,13 +416,18 @@ var ui = {
   slpPrice: function(value) {
     var payout1 = 2600 * value;
     var payout2 = 4200 * value;
-    $('#slpPrice').html('₱' + helper.formatNumber(value));
+    $('.slp-price').html('₱' + helper.formatNumber(value));
     $('#payout1').html('₱' + helper.formatNumber(payout1));
     $('#payout2').html('₱' + helper.formatNumber(payout2));
   },
+  myInfo: function(scholar) {
+    $('.my-account').html(scholar.account);
+    var hiddenAddress = '[' + scholar.axieRoninAddress.substring(0,6) + ' ... ' + scholar.axieRoninAddress.substring(42,36) + ']';
+    $('.my-ronin-address').html(hiddenAddress);
+  },
   myPayout: function(value) {
-    $('#myPayout').html(helper.formatNumber(value));
-    $('#myPayoutPhp').html('₱' + helper.formatNumber(value * slpPriceInPhp));
+    $('.my-payout').html(helper.formatNumber(value) + ' SLP');
+    $('.my-payout-php').html('₱' + helper.formatNumber(value * slpPriceInPhp));
   },
   totalSlpEarned: function(value) {
     $('#totalSlpEarned').html(helper.formatNumber(value));
@@ -704,6 +718,7 @@ var main = {
       }
 
       if (scholar.axieRoninAddress === auth.identity) {
+        ui.myInfo(scholar);
         ui.myPayout(scholar.slpEarned);
       }
     });

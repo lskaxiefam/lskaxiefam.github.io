@@ -137,31 +137,36 @@
         </div>
       </nav>
       <nav class="level is-mobile">
-        <!-- <div class="level-item has-text-centered">
-          <div>
-            <p class="heading"><i class="fas fa-calendar-alt"></i> Days Left</p>
-            <p class="title" id="daysLeft">-</p>
-          </div>
-        </div> -->
         <div class="level-item has-text-centered">
           <div>
             <p class="heading">SLP Price</p>
-            <p class="title" id="slpPrice">-</p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">My<img src="images/slp.png" class="slp-icon-small"> Payout</p>
-            <p class="title" id="myPayout">-</p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">Payout PHP Value</p>
-            <p class="title" id="myPayoutPhp">-</p>
+            <p class="title slp-price" id="slpPrice">-</p>
           </div>
         </div>
       </nav>
+    </div>
+  </section>
+
+  <!---WALLET -->
+  <section class="hero is-small is-info ml-3 mr-3 mt-5" style="border-radius: 10px;">
+    <div class="hero-body">
+      <strong class="my-account">-</strong> <small class="tag is-info my-ronin-address"></small>
+      <button class="ghost-button" onclick="helper.copyMyRoninAddressToClipboard()">
+        <i class="fas fa-clone" style="cursor: pointer;"></i>
+      </button>
+      <div class="mt-4 mb-4" style="border-bottom: 1px solid white;">
+      </div>
+      <nav class="level is-mobile mb-2">
+        <div class="">
+          <div>
+            <p class="heading">NEXT PAYOUT</p>
+            <p class="title my-payout" id="myPayout">--</p>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <strong class="heading my-payout-php" id="myPayoutPhp">0.00</strong>
+      </div>
     </div>
   </section>
 
@@ -195,7 +200,7 @@
     </article>
     
     <!-- PAYSLIP -->  
-    <div id="scholarPayslip" class="container is-dark">
+    <div id="scholarPayslip" class="container payslip">
     </div>
 
     <!-- TRACKER -->  
