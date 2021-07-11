@@ -1,0 +1,55 @@
+.ghost-button {
+  background: transparent;
+  border: none;
+  color: $light;
+  padding: 0; 
+
+  &:active {
+    color: $dark;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark;
+    color: $light;
+  }
+}
+
+.radius-large {
+  border-radius: 15px;
+}
+
+.no-radius {
+  border-radius: 0 !important;
+}
+
+.slp-icon-tiny {
+  height: 10px;
+}
+
+.slp-icon-large {
+  height: 35px;
+}
+
+table.table {
+  width: 100%;
+  background-color: $dark;
+  
+  tr.highlight {
+    background-color: #4e4e4e;
+  }
+
+  td, th {
+    border: none;
+    color: $light;
+  }
+}
+
+.right {
+  text-align: right !important;
+}
+
+
