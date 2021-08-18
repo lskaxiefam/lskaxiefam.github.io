@@ -18,6 +18,13 @@
   }
 }
 
+.tag {
+  &.is-abyss {
+    background-color: #6d5442;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
 .radius-large {
   border-radius: 15px;
 }
@@ -39,7 +46,7 @@ table.table {
   background-color: $dark;
   
   tr.highlight {
-    background-color: #4e4e4e;
+    background-color: #2572b3;
   }
 
   td, th {
@@ -53,3 +60,19 @@ table.table {
 }
 
 
+.table {
+  font-size: 10px;
+  td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #444444;
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
