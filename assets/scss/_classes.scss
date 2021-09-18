@@ -23,6 +23,15 @@
 }
 
 table {
+  thead {
+    tr {
+      background: #f1eded;
+    }
+  }
+  tr:nth-child(2n+2){
+    background: #f1eded;
+  }
+
   small {
     font-size: 11px;
   }
