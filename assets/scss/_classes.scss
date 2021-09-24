@@ -36,3 +36,10 @@ table {
     font-size: 11px;
   }
 }
+
+.copy {
+  &:active, &:focus {
+    color:red;
+    cursor: pointer;
+  }
+} 
